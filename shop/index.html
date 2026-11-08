@@ -18,7 +18,7 @@
   --bad: #f85149;
   --gold: #d29922;
   --purple: #bc8cff;
-  --polar-blue: #0062ff;
+  --gumroad-pink: #ff90e8;
 }
 * { box-sizing: border-box; }
 body {
@@ -73,7 +73,7 @@ header p {
   transform: translateY(-2px);
 }
 .card.featured {
-  border-color: var(--polar-blue);
+  border-color: #ff90e8;
   box-shadow: 0 0 24px rgba(0, 98, 255, 0.18);
 }
 .card.elite {
@@ -126,7 +126,7 @@ header p {
   transition: opacity 0.15s, background-color 0.15s;
 }
 .btn-polar {
-  background: var(--polar-blue);
+  background: #ff90e8;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -148,7 +148,7 @@ header p {
 }
 .notice {
   background: #1f6feb1a;
-  border-left: 3px solid var(--polar-blue);
+  border-left: 3px solid #ff90e8;
   padding: 14px 18px;
   border-radius: 0 8px 8px 0;
   margin: 20px 0 28px;
@@ -454,78 +454,93 @@ input, select {
 
   </div>
 
-  <!-- Polar License Key Validation & Update Section -->
-  <h2 class="section-title">License Key Validation & Update Check</h2>
+  <!-- Gumroad License Key Validation & Update Section -->
+  <h2 class="section-title">Gumroad License Key Verification &amp; Update Check</h2>
   <div style="background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px;">
     <p style="color:var(--dim); margin-top:0;">
-      Bought via Gumroad or PayPal? Enter your <strong>License Key</strong> or check if a new major release (<code>X.0.0</code>) is available:
+      Bought via Gumroad? Enter your <strong>Gumroad License Key</strong> to verify authenticity, active activations, and check for official software updates:
     </p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
-      <select id="selectProduct" style="min-width:180px;">
-        <option value="sentinel-kit">Sentinel Kit</option>
-        <option value="hexane">Hexane / Carbonation</option>
-        <option value="medcrypto">MedCrypto Suite</option>
-        <option value="vmp-devirt">VMP_DEVIRT</option>
-        <option value="zk-hypervm">zk-HyperVM</option>
-        <option value="rusty-chain-kit">Rusty Chain Kit</option>
+      <select id="selectProduct" style="min-width:210px;">
+        <option value="vgmjtb" data-slug="aether">Aether Sovereign Desktop Pro</option>
+        <option value="cnogyy" data-slug="sentinel-kit">Sentinel Kit</option>
+        <option value="cvjce" data-slug="hexane">Hexane / Carbonation</option>
+        <option value="llpvi" data-slug="medcrypto">MedCrypto Suite</option>
+        <option value="bndufv" data-slug="vmp-devirt">VMP_DEVIRT</option>
+        <option value="dlanpu" data-slug="zk-hypervm">zk-HyperVM</option>
+        <option value="znvck" data-slug="rusty-chain-kit">Rusty Chain Kit</option>
+        <option value="hyyezm" data-slug="rea">REA 7.0</option>
       </select>
-      <input id="polarKeyInput" type="text" placeholder="Enter Polar License Key (e.g. AETH_XXXX or key)" style="flex:2; min-width:240px;">
-      <button class="btn btn-polar" style="width:auto; padding:0 20px;" onclick="validatePolarKey()">Validate with Polar API</button>
+      <input id="gumroadKeyInput" type="text" placeholder="Enter Gumroad License Key (e.g. XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX)" style="flex:2; min-width:260px;">
+      <button class="btn btn-gumroad" style="width:auto; padding:0 20px; display:inline-flex; align-items:center;" onclick="validateGumroadKey()">Verify with Gumroad API</button>
       <button class="btn btn-success" style="width:auto; padding:0 20px;" onclick="checkVersion()">Check for Updates</button>
     </div>
-    <div id="polarValidationResult" style="display:none; margin-top:16px;"></div>
+    <div id="gumroadValidationResult" style="display:none; margin-top:16px;"></div>
     <div id="updateResult" style="display:none; margin-top:16px;"></div>
   </div>
 
 </div>
 
 <script>
-const POLAR_ORG_ID = '9ebf8af0-a566-4fa7-8869-07fff0b13c7a';
-
-async function validatePolarKey() {
-  const key = document.getElementById('polarKeyInput').value.trim();
-  const resDiv = document.getElementById('polarValidationResult');
+async function validateGumroadKey() {
+  const permalink = document.getElementById('selectProduct').value;
+  const key = document.getElementById('gumroadKeyInput').value.trim();
+  const resDiv = document.getElementById('gumroadValidationResult');
+  
   if (!key) {
-    alert('Please enter your Polar license key.');
+    alert('Please enter your Gumroad license key.');
     return;
   }
+  
   resDiv.style.display = 'block';
-  resDiv.innerHTML = '<span style="color:var(--dim);">Connecting to Polar.sh API (org: ' + POLAR_ORG_ID + ')...</span>';
+  resDiv.innerHTML = '<span style="color:var(--dim);">Connecting to Gumroad API (POST /v2/licenses/verify)...</span>';
 
   try {
-    const res = await fetch('https://api.polar.sh/v1/customer-portal/license-keys/validate', {
+    const formData = new URLSearchParams();
+    formData.append('product_permalink', permalink);
+    formData.append('license_key', key);
+    formData.append('increment_uses_count', 'false');
+
+    const res = await fetch('https://api.gumroad.com/v2/licenses/verify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        key: key,
-        organization_id: POLAR_ORG_ID
-      })
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData
     });
 
     const data = await res.json();
-    if (res.ok && data.status === 'granted') {
+    if (res.ok && data.success) {
+      const p = data.purchase || {};
+      const uses = data.uses || 0;
+      const email = p.email ? p.email.replace(/(.{2})(.*)(@.*)/, '$1***$3') : 'Licensed Customer';
+      const createdDate = p.created_at ? new Date(p.created_at).toLocaleDateString() : 'Active';
+
       resDiv.innerHTML = `
         <div style="background:#2ea44f1a; border-left:3px solid var(--good); padding:14px; border-radius:0 6px 6px 0;">
-          <h4 style="margin:0 0 6px; color:var(--good);">✔ Active License Key Verified</h4>
-          <p style="margin:2px 0; font-size:13px;">Customer: <strong>${data.customer?.email || 'Licensed Owner'}</strong></p>
-          <p style="margin:2px 0; font-size:12px; color:var(--dim);">Activations Used: ${data.usage || 0} / ${data.limit_activations || 'Unlimited'}</p>
-          <p style="margin:2px 0; font-size:12px; color:var(--dim);">Key Status: <strong style="color:var(--good);">${data.status.toUpperCase()}</strong></p>
+          <h4 style="margin:0 0 6px; color:var(--good);">✔ Active Gumroad License Key Verified</h4>
+          <p style="margin:2px 0; font-size:13px; color:var(--text);">Product: <strong>${p.product_name || 'Aether Commercial Tool'}</strong></p>
+          <p style="margin:2px 0; font-size:12px; color:var(--dim);">Licensed To: <strong>${email}</strong> &bull; Issued: ${createdDate}</p>
+          <p style="margin:2px 0; font-size:12px; color:var(--dim);">Activations: <strong>${uses}</strong> / ${p.variants || 'Unlimited Seat'}</p>
+          <p style="margin:2px 0; font-size:12px; color:var(--dim);">License Status: <strong style="color:var(--good);">${p.refunded ? 'REFUNDED' : (p.chargebacked ? 'CHARGEBACK' : 'ACTIVE &bull; IN GOOD STANDING')}</strong></p>
         </div>
       `;
     } else {
       resDiv.innerHTML = `
         <div style="background:#f851491a; border-left:3px solid var(--bad); padding:12px; border-radius:0 6px 6px 0;">
-          <span style="color:var(--bad); font-weight:600;">✖ Validation Rejected:</span> ${data.detail || data.status || 'Key not found in this organization.'}
+          <span style="color:var(--bad); font-weight:600;">✖ Validation Rejected:</span> ${data.message || 'License key does not match this product.'}
         </div>
       `;
     }
   } catch (err) {
-    resDiv.innerHTML = `<span style="color:var(--bad);">Error connecting to Polar API: ${err.message}</span>`;
+    resDiv.innerHTML = `<span style="color:var(--bad);">Error connecting to Gumroad API: ${err.message}</span>`;
   }
 }
 
 async function checkVersion() {
-  const productKey = document.getElementById('selectProduct').value;
+  const sel = document.getElementById('selectProduct');
+  const selectedOpt = sel.options[sel.selectedIndex];
+  const productKey = selectedOpt.getAttribute('data-slug') || sel.value;
   const resDiv = document.getElementById('updateResult');
   resDiv.style.display = 'block';
   resDiv.innerHTML = '<span style="color:var(--dim);">Checking versions registry...</span>';
@@ -546,7 +561,7 @@ async function checkVersion() {
         <p style="margin:4px 0; font-size:13px; color:var(--text);">${meta.changelog}</p>
         <p style="margin:4px 0; font-size:12px; color:var(--dim);">Price: <strong>${meta.price || '$39.99'}</strong> &bull; Released: ${meta.release_date}</p>
         <div style="margin-top:10px; display:flex; gap:10px;">
-          <a class="btn btn-polar" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.gumroad_checkout_url || meta.polar_checkout_url}" target="_blank">Get v${meta.latest_version} via Gumroad</a>
+          <a class="btn btn-gumroad" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.gumroad_checkout_url || meta.polar_checkout_url}" target="_blank">Get v${meta.latest_version} via Gumroad</a>
           <a class="btn btn-success" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.download_url}" target="_blank">Direct Download</a>
         </div>
       </div>
