@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Jadeite Anatomy Board</title>
+    <meta name="description" content="Talk, sketch and dissect: an on-device 3D anatomy board for explaining to patients and teaching students." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 6 9v14l10 6 10-6V9z' fill='%23123b38' stroke='%232dd4bf' stroke-width='2'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-C31f5fM2.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CXgLKolQ.css">
+  </head>
+  <body>
+    <div class="app" id="app" data-audience="patient" data-tool="navigate">
+      <header class="topbar">
+        <div class="brand">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 9v14l10 6 10-6V9z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 3v26M6 9l20 14M26 9 6 23" stroke="currentColor" stroke-width="1" opacity=".45"/></svg>
+          <span>Jadeite</span><small>Anatomy Board</small>
+        </div>
+        <div class="search">
+          <input id="search" type="search" autocomplete="off" placeholder="검색 · Search  (대퇴골, femur, #36, L5)" aria-label="Search anatomy" />
+          <div class="results" id="search-results" role="listbox" hidden></div>
+        </div>
+        <div class="seg" id="audience" role="group" aria-label="Audience">
+          <button data-v="patient" class="on">환자 Patient</button>
+          <button data-v="student">학생 Student</button>
+        </div>
+        <div class="seg" id="lang" role="group" aria-label="Name language">
+          <button data-v="ko" class="on">한</button>
+          <button data-v="en">EN</button>
+          <button data-v="ja">日</button>
+          <button data-v="la">LA</button>
+        </div>
+        <button class="ghost-btn" id="btn-report" title="수술 계획서 / 환자 설명서 · Pre-op & Explanation Report">보고서 Report</button>
+        <button class="ghost-btn" id="btn-scenes" title="Saved scenes and lesson files">장면 Scenes</button>
+        <button class="ghost-btn" id="btn-export" title="Save a PNG of the board">PNG</button>
+        <button class="primary-btn pro-badge" id="btn-license" title="Jadeite Pro Commercial License ($29.99)">Pro $29.99</button>
+        <button class="ghost-btn" id="btn-settings" title="Settings" aria-label="Settings">
+          <svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.3 4.6-1.6-.9a6.9 6.9 0 0 0 0-2.4l1.6-.9-1.8-3.1-1.6.9a7 7 0 0 0-2.1-1.2V3.6h-3.6v1.9a7 7 0 0 0-2.1 1.2l-1.6-.9-1.8 3.1 1.6.9a6.9 6.9 0 0 0 0 2.4l-1.6.9 1.8 3.1 1.6-.9a7 7 0 0 0 2.1 1.2v1.9h3.6v-1.9a7 7 0 0 0 2.1-1.2l1.6.9z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </header>
+
+      <nav class="rail" id="tools" aria-label="Tools">
+        <button data-tool="navigate" class="on" title="둘러보기 · Look around (tap a structure for details)">
+          <svg viewBox="0 0 24 24"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V12m0-1.5v-6a1.5 1.5 0 0 1 3 0V12m0-5.5a1.5 1.5 0 0 1 3 0V13m0-3a1.5 1.5 0 0 1 3 0v4.5a7 7 0 0 1-7 7h-1a7 7 0 0 1-6.1-3.6L3.5 14a1.6 1.6 0 0 1 2.7-1.7L8 15"/></svg><span>보기</span>
+        </button>
+        <button data-tool="sketch" title="그리기 · Sketch a body part to open it in 3D">
+          <svg viewBox="0 0 24 24"><path d="m4 20 1-4 11-11 3 3L8 19zM14 7l3 3"/></svg><span>그리기</span>
+        </button>
+        <button data-tool="scalpel" title="메스 · Scalpel: draw a line to cut, then tap the side to take away">
+          <svg viewBox="0 0 24 24"><path d="M3 21 15.5 8.5l2 2L7 21zM15.5 8.5 20 4"/><path d="M17.5 10.5 21 7"/></svg><span>메스</span>
+        </button>
+        <button data-tool="dissect" title="해부 · Dissect: tap to remove, drag to pull a structure out">
+          <svg viewBox="0 0 24 24"><path d="M5 3l7 9m7-9-7 9m0 0v9m-3 0h6"/></svg><span>해부</span>
+        </button>
+        <button data-tool="pen3d" title="표시 · Mark on the body's surface">
+          <svg viewBox="0 0 24 24"><path d="M3 21c3-1 5-4 9-4s4 3 9 3M7 13l8-8 3 3-8 8H7z"/></svg><span>표시</span>
+        </button>
+        <button data-tool="measure" title="측정 · Measure in real centimetres">
+          <svg viewBox="0 0 24 24"><path d="m3 17 14-14 4 4L7 21zM7 13l2 2m1-5 2 2m1-5 2 2"/></svg><span>측정</span>
+        </button>
+        <button data-tool="suction" title="석션 흡인기 · Suction cannula: clear pooled blood">
+          <svg viewBox="0 0 24 24"><path d="M4 20l8-8m0 0l4-4 2 2-4 4m-2-2 3-3"/><circle cx="19" cy="5" r="2"/></svg><span>석션</span>
+        </button>
+        <button data-tool="cautery" title="보비 전기소작기 · Electrocautery (Bovie): coagulate bleeding vessels">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>소작</span>
+        </button>
+        <hr />
+        <button data-toggle="spotlight" class="on" title="말한 것만 강조 · Spotlight what is said">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/></svg><span>강조</span>
+        </button>
+        <button data-toggle="section" title="단면 · Cross-section">
+          <svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8"/><path d="M4 12l8 4 8-4" stroke-dasharray="2 2"/></svg><span>단면</span>
+        </button>
+        <button data-toggle="xray" title="투시 · X-ray">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M8 6.5c1.5 3.5 1.5 7.5 0 11m8-11c-1.5 3.5-1.5 7.5 0 11"/></svg><span>투시</span>
+        </button>
+        <button data-toggle="explode" title="분해 · Exploded view">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6"/><path d="M4 4l3 3m13-3-3 3M4 20l3-3m13 3-3-3"/></svg><span>분해</span>
+        </button>
+        <button data-toggle="labels" title="이름표 · Labels">
+          <svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg><span>이름표</span>
+        </button>
+        <button data-toggle="ortho" title="정투영 · Orthographic (true scale, no perspective)">
+          <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/><path d="M4 12h16M12 4v16" stroke-dasharray="2 2"/></svg><span>정투영</span>
+        </button>
+        <hr />
+        <button data-action="undo" title="되돌리기 · Undo (Ctrl+Z)">
+          <svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span>되돌리기</span>
+        </button>
+        <button data-action="reset" title="처음 화면 · Reset everything">
+          <svg viewBox="0 0 24 24"><path d="M4 4v6h6"/><path d="M20 12a8 8 0 1 1-2.4-5.7L20 9"/></svg><span>처음</span>
+        </button>
+      </nav>
+
+      <main class="viewport" id="viewport">
+        <div class="callout" id="callout" hidden>
+          <div class="callout-eyebrow" id="callout-eyebrow"></div>
+          <h1 id="callout-title"></h1>
+          <div class="callout-sub" id="callout-sub"></div>
+          <p id="callout-info"></p>
+        </div>
+        <div class="chips sketch-chips" id="sketch-chips" hidden></div>
+        <div class="floating seg scalpel-mode" id="scalpel-mode" hidden>
+          <button data-v="incision" class="on" title="손가락으로 그은 대로 피부를 절개합니다">절개 · Incision</button>
+          <button data-v="plane" title="선을 따라 평면으로 잘라 한쪽을 들어냅니다">평면 절단 · Plane cut</button>
+        </div>
+        <div class="scalpel-sides" id="scalpel-sides" hidden>
+          <button id="cut-a">이쪽 들어내기<small>Remove this side</small></button>
+          <button id="cut-b">이쪽 들어내기<small>Remove this side</small></button>
+          <div class="cut-depth seg" id="cut-depth">
+            <button data-v="skin">피부만</button><button data-v="muscle">근육까지</button><button data-v="all" class="on">전부</button>
+          </div>
+        </div>
+        <div class="floating section-panel" id="section-panel" hidden>
+          <div class="seg" id="section-axis">
+            <button data-v="axial" title="가로 단면 (CT처럼)">가로 Axial</button>
+            <button data-v="sagittal" class="on" title="옆에서 본 세로 단면">시상 Sagittal</button>
+            <button data-v="coronal" title="앞에서 본 세로 단면">관상 Coronal</button>
+          </div>
+          <input id="section-pos" type="range" min="-100" max="100" step="0.5" value="0" aria-label="Section position" />
+          <div class="row">
+            <button class="ghost-btn" id="section-flip">반대쪽 · Flip</button>
+            <label class="check"><input type="checkbox" id="wedge" /> 쐐기 절개 · Wedge cutaway</label>
+            <button class="ghost-btn" id="cuts-clear">절개 지우기 · Clear cuts</button>
+          </div>
+        </div>
+        <div class="floating explode-panel" id="explode-panel" hidden>
+          <span>분해 · Explode</span>
+          <input id="explode" type="range" min="0" max="1.2" step="0.01" value="0" aria-label="Explode amount" />
+        </div>
+        <div class="depth" id="depth" title="해부 깊이 · Dissection depth">
+          <span>피부<small>Skin</small></span>
+          <input id="depth-range" type="range" min="0" max="4" step="0.01" value="0.35" aria-label="Dissection depth" />
+          <span>뼈<small>Bone</small></span>
+          <div class="depth-ticks"><i>피하지방/진피 · Fat</i><i>근육 · Muscle</i><i>혈관·신경·장기 · Vessels, organs</i></div>
+        </div>
+        <div class="loading" id="loading">
+          <div class="loading-title">Jadeite</div>
+          <div class="bar"><i id="loading-bar"></i></div>
+          <div id="loading-text">해부 모델을 불러오는 중 · Loading anatomy</div>
+        </div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </main>
+
+      <aside class="side" id="side">
+        <div class="tabs" role="tablist" aria-label="Panels">
+          <button role="tab" data-tab="info" class="on">구조 Info</button>
+          <button role="tab" data-tab="layers">레이어 Layers</button>
+          <button role="tab" data-tab="procs">시술 Procedures</button>
+          <button role="tab" data-tab="depts">진료과 Depts</button>
+          <button role="tab" data-tab="quiz" class="student-only">퀴즈 Quiz</button>
+        </div>
+        <section class="tab-body" data-tab="info" id="tab-info"></section>
+        <section class="tab-body" data-tab="layers" id="tab-layers" hidden></section>
+        <section class="tab-body" data-tab="procs" id="tab-procs" hidden></section>
+        <section class="tab-body" data-tab="depts" id="tab-depts" hidden></section>
+        <section class="tab-body" data-tab="quiz" id="tab-quiz" hidden></section>
+      </aside>
+
+      <footer class="voicebar">
+        <button class="mic" id="mic" aria-label="Start listening">
+          <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          <span id="mic-label">음성 시작</span>
+        </button>
+        <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+        <div class="caption" id="caption"><span class="hint">말씀하시면 해당 부위만 강조해서 보여 드립니다. · Talk, and the board shows only what you mention.</span></div>
+        <input id="say" type="text" autocomplete="off" placeholder="말 대신 입력 · Type instead (예: 오른쪽 무릎 단면 보여줘)" aria-label="Type a command" />
+        <div class="mentions" id="mentions"></div>
+      </footer>
+
+      <dialog id="dlg-scenes" class="sheet">
+        <h2>장면 · Scenes</h2>
+        <p class="muted">이 기기에 저장됩니다. 수업 파일로 내보내 다른 기기에서 열 수 있습니다. · Saved on this device; export a lesson file to open it elsewhere.</p>
+        <div class="row"><input id="scene-name" placeholder="장면 이름 · Scene name" /><button id="scene-save" class="primary">저장 Save</button></div>
+        <ul id="scene-list" class="list"></ul>
+        <div class="row">
+          <button id="lesson-export" class="ghost-btn">수업 파일 내보내기 · Export lesson</button>
+          <label class="ghost-btn file">수업 파일 열기 · Open lesson<input type="file" id="lesson-import" accept="application/json,.json" hidden /></label>
+        </div>
+        <form method="dialog"><button class="ghost-btn">닫기 Close</button></form>
+      </dialog>
+
+      <dialog id="dlg-papers" class="sheet wide">
+        <h2>관련 논문 · Related papers</h2>
+        <p class="muted small"><b id="papers-title"></b> · Europe PMC (PubMed 포함) 검색 결과입니다. 검색어만 전송되며 환자 정보는 전송되지 않습니다. · Only the search words are sent.</p>
+        <ul id="papers-list" class="list papers"></ul>
+        <form method="dialog"><button class="ghost-btn">닫기 Close</button></form>
+      </dialog>
+
+      <dialog id="dlg-settings" class="sheet">
+        <h2>설정 · Settings</h2>
+        <label class="field">강조 정도 · Emphasis<input id="set-emph" type="range" min="0" max="1" step="0.05" value="0.6" /></label>
+        <label class="field">주변 구조 흐림 · Context ghost<input id="set-ghost" type="range" min="0.02" max="0.4" step="0.01" value="0.12" /></label>
+        <label class="field">음성 모델 · Speech model<select id="set-model"></select></label>
+        <label class="field">인식 언어 · Speech language
+          <select id="set-stt-lang"><option value="ko">한국어</option><option value="en">English</option><option value="ja">日本語</option><option value="auto">자동 Auto</option></select>
+        </label>
+        <label class="check"><input type="checkbox" id="set-quality" checked /> 고품질 렌더링 (그림자·광택) · High-quality rendering</label>
+        <label class="check"><input type="checkbox" id="set-phi" checked /> 자막의 주민번호·전화번호 가리기 · Mask ID and phone numbers in captions</label>
+        <label class="check"><input type="checkbox" id="set-pen" /> 펜 위치 표시 (녹화·강의용) · Show the pen for recordings</label>
+        <p class="muted small">음성은 이 기기 안에서만 처리되며 서버로 전송되지 않습니다. 진단·치료 결정용이 아닌 설명·교육용 도구입니다. · Speech is processed on this device only. For explanation and teaching, not for diagnosis or treatment decisions.</p>
+        <p class="muted small" id="credits"></p>
+        <form method="dialog"><button class="ghost-btn">닫기 Close</button></form>
+      </dialog>
+      <dialog id="dlg-license" class="sheet wide">
+        <div class="pro-header">
+          <h2>Jadeite Pro <span class="price-tag">$29.99</span></h2>
+          <p class="lead">Medical-grade 3D Surgical Anatomy & Clinical Simulation Platform</p>
+        </div>
+        <div class="pro-features">
+          <ul>
+            <li><b>전체 65+ 전문 수술 시뮬레이션:</b> 10개 진료과 (일반외과, 흉부/심장, 정형외과, 신경외과, 비뇨의학과, 성형외과, 이비인후과, 안과, 장기이식)</li>
+            <li><b>실감 외과 도구 & 물리 엔진:</b> 동맥 분출/정맥 출혈, 흡인(석션), 보비 전기소작 지혈 및 연기 효과, 수술 견인기</li>
+            <li><b>고해상도 4층 해부 모델:</b> 피부 - 피하지방(진피) - 근육 - 혈관/신경/장기 - 골격 및 Z-Anatomy 414개 인대/관절</li>
+            <li><b>의사용 수술계획서 & 환자설명서 (Report):</b> 실시간 3D 시야 캡처, ASA 분류, 단계별 수술 궤적, PDF 인쇄</li>
+            <li><b>진단 퍼즐 Doctordle & Europe PMC 논문:</b> 매일 업데이트되는 임상 증례 추론 및 최신 의학 문헌 연계</li>
+            <li><b>100% 온디바이스 음성 AI & 다국어 지원:</b> 한국어·영어·일본어·라틴어 실시간 전환, PHI 보호</li>
+          </ul>
+        </div>
+        <div class="trial-note" id="trial-msg">
+          ※ 현재 <b>웹 체험판(Web Try)</b>에서는 <b>"왼팔 힘줄 재건술 (Left arm tendon reconstruction)"</b>을 무료로 직접 체험하실 수 있습니다. 다른 수술을 진행하려면 Pro 라이선스 키를 활성화하세요.
+        </div>
+        <div class="license-activate">
+          <label for="input-license"><b>라이선스 키 인증 · Activate License Key:</b></label>
+          <div class="row" style="margin-top:4px;">
+            <input id="input-license" placeholder="예: JDT-PRO-XXXX-XXXX 또는 DEMO" />
+            <button id="btn-activate-license" class="primary">인증 Activate</button>
+          </div>
+          <div class="row" style="margin-top:10px; gap:8px;">
+            <button id="btn-buy-license" class="primary highlight">지금 구매하기 · Buy Pro $29.99</button>
+            <button id="btn-try-tendon" class="ghost-btn">체험 허용: 왼팔 힘줄 재건술 실행</button>
+          </div>
+        </div>
+        <form method="dialog" style="margin-top:16px;"><button class="ghost-btn">닫기 Close</button></form>
+      </dialog>
+    </div>
+  </body>
+</html>

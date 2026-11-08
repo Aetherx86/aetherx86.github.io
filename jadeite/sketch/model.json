@@ -1,0 +1,128 @@
+{
+  "architecture": "conv3x3(16)+relu+pool2, conv3x3(32)+relu+pool2, conv3x3(64)+relu+pool2, fc576-128+relu, fc128-k",
+  "input": [
+    1,
+    28,
+    28
+  ],
+  "classes": [
+    "arm",
+    "elbow",
+    "hand",
+    "leg",
+    "knee",
+    "foot",
+    "eye",
+    "ear",
+    "tooth",
+    "skull",
+    "brain",
+    "face",
+    "circle",
+    "line",
+    "squiggle",
+    "zigzag",
+    "triangle",
+    "square"
+  ],
+  "layers": [
+    {
+      "name": "c1.weight",
+      "shape": [
+        16,
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "name": "c1.bias",
+      "shape": [
+        16
+      ]
+    },
+    {
+      "name": "c2.weight",
+      "shape": [
+        32,
+        16,
+        3,
+        3
+      ]
+    },
+    {
+      "name": "c2.bias",
+      "shape": [
+        32
+      ]
+    },
+    {
+      "name": "c3.weight",
+      "shape": [
+        64,
+        32,
+        3,
+        3
+      ]
+    },
+    {
+      "name": "c3.bias",
+      "shape": [
+        64
+      ]
+    },
+    {
+      "name": "f1.weight",
+      "shape": [
+        128,
+        576
+      ]
+    },
+    {
+      "name": "f1.bias",
+      "shape": [
+        128
+      ]
+    },
+    {
+      "name": "f2.weight",
+      "shape": [
+        18,
+        128
+      ]
+    },
+    {
+      "name": "f2.bias",
+      "shape": [
+        18
+      ]
+    }
+  ],
+  "params": 99474,
+  "validation": {
+    "top1": 0.8991,
+    "top3": 0.9833,
+    "samples": 16200,
+    "perClassTop1": {
+      "arm": 0.8108,
+      "elbow": 0.7985,
+      "hand": 0.9679,
+      "leg": 0.764,
+      "knee": 0.8072,
+      "foot": 0.864,
+      "eye": 0.9521,
+      "ear": 0.929,
+      "tooth": 0.9363,
+      "skull": 0.9595,
+      "brain": 0.9471,
+      "face": 0.9415,
+      "circle": 0.9568,
+      "line": 0.9375,
+      "squiggle": 0.7269,
+      "zigzag": 0.9118,
+      "triangle": 0.9817,
+      "square": 0.9812
+    }
+  },
+  "data": "Quick, Draw! dataset (Google Creative Lab), CC BY 4.0. https://github.com/googlecreativelab/quickdraw-dataset"
+}
