@@ -324,6 +324,38 @@ input, select {
       </div>
     </div>
 
+    <!-- Jadeite (3D Surgical Anatomy & Clinical Simulation Board) -->
+    <div class="card featured" style="border-color: rgba(45, 212, 191, 0.45); box-shadow: 0 0 25px rgba(45, 212, 191, 0.08);">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:rgba(45, 212, 191, 0.15); color:#2dd4bf; border:1px solid rgba(45, 212, 191, 0.35);">Surgical Anatomy &amp; Simulation</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Instant Delivery &bull; On-Device</span>
+        </div>
+        <h2 style="color:#2dd4bf;">Jadeite</h2>
+        <div class="desc">On-device 3D anatomy board &amp; surgical simulator: 2,234 structures across 8 layers, 3D trench incisions, vascular clamping, cath lab PCI, and hemodynamic vitals monitor.</div>
+        <div class="meta" style="margin-top:10px; font-size:12px; font-family:monospace; color:var(--dim);">
+          &bull; 2,234 Anatomical Structures across 8 layers (BodyParts3D &amp; FMA)<br>
+          &bull; 100% On-Device Whisper AI Speech &amp; QuickDraw CNN Sketching<br>
+          &bull; Full Operating Room (OR) with realistic incisions, bleeding &amp; sutures<br>
+          &bull; Cath Lab PCI: arterial access, fluoroscopic wire, balloon &amp; stent
+        </div>
+      </div>
+      <div>
+        <div class="price-tag" style="color:#2dd4bf;">$29.99</div>
+        <div class="price-sub">One-time purchase &bull; Commercial Pro License &bull; Free Major Upgrades</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="https://7497950237241.gumroad.com/" target="_blank" class="btn btn-gumroad" style="background:linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%); color:#0b1f1d; font-weight:700;">Buy Commercial Pro ($29.99) &rarr;</a>
+          <button class="btn btn-paypal" onclick="openCheckout('jadeite-license', 'Jadeite — Commercial Pro License', 29.99)">Or Checkout with PayPal</button>
+          <a href="../jadeite/" target="_blank" class="btn" style="background:transparent; border:1px solid rgba(45,212,191,0.4); color:#2dd4bf; text-align:center; text-decoration:none; font-size:12px; padding:8px 12px; display:block;">
+            Try Live Web App (Left Arm Tendon) &rarr;
+          </a>
+          <a href="../products/#jadeite" class="btn" style="background:transparent; border:1px solid var(--line); color:var(--dim); text-align:center; text-decoration:none; font-size:12px; padding:8px 12px; display:block;">
+            Interactive Testbed &amp; Specs &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- 1. Sentinel Kit -->
     <div class="card featured">
       <div>
@@ -611,9 +643,7 @@ let currentToken = '';
 function openCheckout(productId, name, price) {
   currentProduct = productId;
   document.getElementById('checkoutTitle').innerText = 'Checkout: ' + name;
-  document.getElementById('checkoutDesc').innerText = 'Total: 
-</html>
- + price + ' USD (Includes commercial perpetual license)';
+  document.getElementById('checkoutDesc').innerText = 'Total: $' + price + ' USD (Includes commercial perpetual license)';
   document.getElementById('checkoutView').style.display = 'block';
   document.getElementById('successView').style.display = 'none';
   document.getElementById('checkoutModal').style.display = 'flex';

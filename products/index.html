@@ -595,6 +595,7 @@ header {
     <div class="container">
       <div class="pills-scroll">
         <a href="#aether" class="prod-pill active">Aether Desktop ($9.99)</a>
+        <a href="#jadeite" class="prod-pill">Jadeite ($29.99)</a>
         <a href="#sentinel-kit" class="prod-pill">Sentinel Kit ($39.99)</a>
         <a href="#hexane" class="prod-pill">Hexane Compiler ($24.99)</a>
         <a href="#rea" class="prod-pill">REA 7.0 (Commercial)</a>
@@ -718,6 +719,83 @@ header {
 │  8-Module Suite  │ │  AES-256  │ │  Local Neural AI │ │  Anti-DPI VPN    │ │  Multi-Tab Tor   │
 │  Docs/Sheets/PDF │ │  Vault    │ │  DeepSeek-R1 14B │ │  TCP Frag Engine │ │  Privacy Browser │
 └──────────────────┘ └───────────┘ └──────────────────┘ └──────────────────┘ └──────────────────┘</code></pre>
+      </div>
+    </section>
+
+    <!-- ==================== JADEITE 3D SURGICAL ANATOMY ==================== -->
+    <section id="jadeite" class="product-section">
+      <div class="product-header">
+        <div>
+          <span class="card-badge" style="background: rgba(45, 212, 191, 0.15); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.4);">3D SURGICAL ANATOMY &amp; CLINICAL SIMULATION BOARD</span>
+          <h2 class="prod-title" style="margin-top: 8px; color: #f8fafc;">Jadeite</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 4px;">
+            On-device 3D anatomy board and surgical simulator for patient explanation, medical education, and operative pre-visualization.
+          </p>
+        </div>
+        <div class="prod-price-tag">
+          <span class="prod-price" style="color: #2dd4bf;">$29.99</span>
+          <span class="prod-price-sub">Perpetual Commercial Pro License</span>
+        </div>
+      </div>
+
+      <p style="color: var(--text); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+        Jadeite provides a doctor or educator with a full 3D interactive human body right in the browser using WebGL and WebAssembly. It replaces hand-drawn whiteboard sketches: talk naturally, and on-device Whisper AI highlights the exact anatomical structures mentioned. Draw a sketch, and an embedded convolutional neural network instantly identifies the body part and opens it in 3D. Perform step-by-step incisions, vascular clamping, hemodynamics monitoring, and catheterization directly on realistic anatomy. All compute and audio processing remain 100% on the local device—zero patient data or audio ever leaves the client machine.
+      </p>
+
+      <div class="ascii-diagram">
++-------------------------------------------------------------------------------------------------+
+|                                          JADEITE                                                |
+|                   On-Device 3D Surgical Anatomy &amp; Clinical Simulation Engine                    |
++-------------------------------------------------------------------------------------------------+
+          |                                      |                                   |
+          v                                      v                                   v
+[ 01-Anatomy Atlas ]                  [ 02-OR &amp; Cath Lab ]                 [ 03-On-Device AI ]
+2,234 3D Structures (8 Layers)        3D Trench Incisions &amp; Bleeding       Local Whisper Speech (WebGPU)
+BodyParts3D &amp; FMA IDs                 Vascular Bulldog Clamps &amp; Sutures    QuickDraw 162k CNN Classifier
+Quadrilingual Clinical Lexicon        Cath PCI: Femoral, Balloon, Stent    100% Offline / Zero Telemetry</div>
+
+      <h3 style="font-size: 1.15rem; color: #f8fafc; margin: 24px 0 12px;">Core Architectural Specifications</h3>
+      <ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; padding-left: 20px; margin-bottom: 20px;">
+        <li><strong style="color: #f1f5f9;">Full 3D Anatomical Atlas:</strong> 2,234 individually selectable anatomical structures partitioned across 8 hierarchical layers: skin, muscles, arteries, veins, nerves, organs, skeleton, and joints/ligaments.</li>
+        <li><strong style="color: #f1f5f9;">Quadrilingual Clinical Lexicon:</strong> Full nomenclature in Korean, English, Japanese, and Latin with Wikidata cross-references, Terminologia Anatomica 2, FDI tooth numbering (#36), and spinal segments (C1–L5, L5-S1).</li>
+        <li><strong style="color: #f1f5f9;">Realistic Operating Room (OR) Simulation:</strong> 3D scalpel strokes produce gaping trench incisions with adipose margins, deep vascular cuts spawn pulsatile arterial bleeding fountains, vascular Bulldog clamps arrest hemorrhage, and curved needles place 3D polypropylene sutures.</li>
+        <li><strong style="color: #f1f5f9;">Cath Lab Percutaneous Coronary Intervention (PCI):</strong> Femoral arterial puncture, guidewire navigation along real vascular geometry, fluoroscopic contrast angiogram, balloon dilatation, and drug-eluting stent deployment.</li>
+        <li><strong style="color: #f1f5f9;">Hemodynamics &amp; Vitals HUD:</strong> Dynamic Mean Arterial Pressure (MAP), Heart Rate (HR), Class I–IV hemorrhagic shock modeling, Estimated Blood Loss (EBL) tracking, and emergency resuscitation pharmacology (Norepinephrine, TXA, PRBC).</li>
+        <li><strong style="color: #f1f5f9;">Air-Gapped Speech &amp; Sketch Recognition:</strong> On-device OpenAI Whisper (via transformers.js with WebGPU/WASM fallback) and a lightweight CNN trained on 162,000 Quick, Draw! sketches (98.3% top-3 accuracy) for instant anatomical retrieval without any cloud inference.</li>
+      </ul>
+
+      <!-- INTERACTIVE TESTBED / LIVE APP LAUNCHER -->
+      <div class="sandbox-box" style="border-color: rgba(45, 212, 191, 0.4);">
+        <div class="sandbox-header">
+          <div class="sandbox-title">
+            <span style="color: #2dd4bf;">⚡ Interactive Live Surgical Anatomy Board (Web Trial Edition)</span>
+            <span class="sandbox-badge" style="background: rgba(45, 212, 191, 0.15); color: #2dd4bf; border-color: rgba(45, 212, 191, 0.35);">WebGL &bull; 60 FPS</span>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-dim); font-family: var(--mono);">On-Device 3D Dissection</div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px;">
+          The fully functional client-side trial includes the complete 2,234-structure 3D human body, real-time dissection tools (scalpel trench cuts, electrocautery, bulldog clamps, suction cannula, suture loops), operating room vitals HUD, and guided clinical case (Left Forearm Flexor Tendon Repair):
+        </p>
+        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom: 14px;">
+          <a href="../jadeite/" target="_blank" class="btn-sample" style="background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%); color: #0b1f1d; font-weight: 700; text-decoration: none; padding: 10px 18px; border: none;">
+            Launch Fullscreen Live Web App (/jadeite/) &rarr;
+          </a>
+          <span style="font-size: 0.82rem; color: var(--text-dim); font-family: var(--mono);">Trial Case: Left Forearm Tendon Repair &bull; Pro Key Unlocks All 175+ Surgeries</span>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
+          Artifact: <code style="color: #2dd4bf;">jadeite-v0.0.1.tar.gz</code> &bull; Ed25519 Verified
+        </div>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/" target="_blank" class="btn-gumroad-checkout" style="background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%); color: #0b1f1d; font-weight: 700;">
+            Purchase Jadeite Pro License ($29.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('jadeite-license', 'Jadeite — Commercial Pro License', 29.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1509,8 +1587,7 @@ let currentToken = '';
 function openCheckout(productId, name, price) {
   currentProduct = productId;
   document.getElementById('checkoutTitle').innerText = 'Checkout: ' + name;
-  document.getElementById('checkoutDesc').innerText = 'Total: 
-</html> + price + ' USD (Includes commercial perpetual license)';
+  document.getElementById('checkoutDesc').innerText = 'Total: $' + price + ' USD (Includes commercial perpetual license)';
   document.getElementById('checkoutView').style.display = 'block';
   document.getElementById('successView').style.display = 'none';
   document.getElementById('checkoutModal').style.display = 'flex';
