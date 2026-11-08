@@ -116,12 +116,12 @@
       "latest_version": "0.0.1",
       "major_version": 0,
       "release_date": "2026-11-09",
-      "price": "$29.99",
-      "polar_checkout_url": "https://7497950237241.gumroad.com/",
+      "price": "$8.99",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/bqlvjw",
       "download_url": "",
       "changelog": "On-device 3D surgical anatomy board: operating room mode, 3D trench incisions, vascular clamping, cath lab PCI, voice navigation, and deterministic clinical cases.",
       "min_license_version": "0.0.1",
-      "gumroad_checkout_url": "https://7497950237241.gumroad.com/"
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/bqlvjw"
     }
   }
 }
