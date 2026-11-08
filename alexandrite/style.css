@@ -110,3 +110,19 @@ table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13p
 th, td { border: 1px solid var(--line); padding: 6px 12px; text-align: left; }
 th { background: #090d13; color: var(--dim); }
 .highlighted-match { background: rgba(88, 166, 255, 0.3); color: #fff; padding: 2px 4px; border-radius: 3px; font-weight: bold; }
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  header { padding: 18px 16px 14px; }
+  main { padding: 16px; }
+  h1 { font-size: 1.4rem; }
+  .card { padding: 16px 14px; margin-bottom: 14px; }
+  .row { flex-direction: column; align-items: stretch; gap: 8px; }
+  input[type="text"], textarea { min-width: 100%; width: 100%; font-size: 16px; /* Avoid iOS auto-zoom */ }
+  .row button { width: 100%; margin: 2px 0; }
+  .metric-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .metric-card { padding: 10px; }
+  .metric-card .value { font-size: 15px; }
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 12px; }
+  th, td { padding: 6px 8px; white-space: nowrap; }
+}
