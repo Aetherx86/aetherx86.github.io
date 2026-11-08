@@ -1,6 +1,7 @@
 {
   "$schema": "https://aetherx86.github.io/schemas/release-manifest.v1.json",
-  "updated_at": "2026-11-08T19:55:00Z",
+  "updated_at": "2026-11-08T20:40:00Z",
+  "organization_id": "9ebf8af0-a566-4fa7-8869-07fff0b13c7a",
   "products": {
     "sentinel-kit": {
       "name": "Sentinel Kit",
@@ -9,7 +10,6 @@
       "release_date": "2026-11-08",
       "price": "$39.99",
       "polar_checkout_url": "https://buy.polar.sh/polar_cl_idbo4vZ4ajh1beCZY17tN070xs6xU7QrBtQBu3RZ3ck",
-      "polar_product_id": "75b547a3-1789-4069-9304-0ffe5d75a8bb",
       "download_url": "https://aetherx86.github.io/releases/sentinel-kit-v1.0.2.tar.gz",
       "changelog": "High-assurance AST pruner, secret scrubber, and Polar.sh + Ed25519 licensing guard.",
       "min_license_version": "1.0.0"
@@ -19,17 +19,10 @@
       "latest_version": "1.0.0",
       "major_version": 1,
       "release_date": "2026-11-08",
+      "price": "$24.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_wwsS0Gng0lIIIZPyXHf7VDvzfhsLZj9SXWg6H4MOiLY",
       "download_url": "https://aetherx86.github.io/releases/hexane-v1.0.0.tar.gz",
-      "changelog": "Initial stable commercial release.",
-      "min_license_version": "1.0.0"
-    },
-    "zk-hypervm": {
-      "name": "zk-HyperVM",
-      "latest_version": "1.0.0",
-      "major_version": 1,
-      "release_date": "2026-11-08",
-      "download_url": "https://aetherx86.github.io/releases/zk-hypervm-v1.0.0.tar.gz",
-      "changelog": "Deterministic zero-knowledge hypervisor runtime.",
+      "changelog": "High-performance Carbon language toolchain & distributed 4-tier telemetry engine.",
       "min_license_version": "1.0.0"
     },
     "medcrypto": {
@@ -37,9 +30,44 @@
       "latest_version": "1.0.0",
       "major_version": 1,
       "release_date": "2026-11-08",
+      "price": "$69.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_bpteW0uBNbtOUKSQxU2thl6NGEDOT8Y3Tsykh0YK1J5",
       "download_url": "https://aetherx86.github.io/releases/medcrypto-v1.0.0.tar.gz",
-      "changelog": "HIPAA-compliant encrypted clinical telemetry pipeline.",
+      "changelog": "HIPAA/GDPR-compliant homomorphic RNS-CKKS encrypted clinical telemetry and EMR analytics pipeline.",
       "min_license_version": "1.0.0"
+    },
+    "vmp-devirt": {
+      "name": "VMP_DEVIRT",
+      "latest_version": "1.0.0",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "price": "$99.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_wgyY05NgIw0vgcpNFPuXC9j2mDktczxSDZcev0B4kmX",
+      "download_url": "https://aetherx86.github.io/releases/vmp-devirt-v1.0.0.tar.gz",
+      "changelog": "64-bit binary devirtualization, VMProtect 3.x/Themida lifting, Z3 SMT solving, and clean LLVM IR recompilation.",
+      "min_license_version": "1.0.0"
+    },
+    "zk-hypervm": {
+      "name": "zk-HyperVM",
+      "latest_version": "1.0.0",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "price": "$149.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_vbTRkzR92DuyjutnJn2HKfPExoJxLuT72ZcXW267HoZ",
+      "download_url": "https://aetherx86.github.io/releases/zk-hypervm-v1.0.0.tar.gz",
+      "changelog": "Verifiable hardware-assisted virtualization via lookup-accelerated IVC folding over EPT & VMCS transitions.",
+      "min_license_version": "1.0.0"
+    },
+    "rusty-chain-kit": {
+      "name": "Rusty Chain Kit",
+      "latest_version": "0.1.1",
+      "major_version": 0,
+      "release_date": "2026-11-08",
+      "price": "$59.99",
+      "polar_checkout_url": "https://buy.polar.sh/aetherx86/rusty-chain-kit",
+      "download_url": "https://aetherx86.github.io/releases/rusty-chain-kit-v0.1.1.tar.gz",
+      "changelog": "Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.",
+      "min_license_version": "0.1.0"
     }
   }
 }

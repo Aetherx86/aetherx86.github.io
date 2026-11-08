@@ -17,6 +17,7 @@
   --good: #3fb950;
   --bad: #f85149;
   --gold: #d29922;
+  --purple: #bc8cff;
   --polar-blue: #0062ff;
 }
 * { box-sizing: border-box; }
@@ -27,51 +28,57 @@ body {
   font: 14px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 header {
-  padding: 32px 32px 20px;
+  padding: 36px 32px 24px;
   border-bottom: 1px solid var(--line);
   background: var(--panel);
 }
 .header-wrap {
-  max-width: 1080px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 h1 {
   margin: 0 0 6px;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 header p {
   margin: 0;
   color: var(--dim);
+  font-size: 15px;
 }
 .container {
-  max-width: 1080px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 32px 20px;
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
   margin-bottom: 40px;
 }
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.2s ease;
 }
-.card.featured {
-  border-color: var(--polar-blue);
-  box-shadow: 0 0 24px rgba(0, 98, 255, 0.2);
-}
 .card:hover {
   border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.card.featured {
+  border-color: var(--polar-blue);
+  box-shadow: 0 0 24px rgba(0, 98, 255, 0.18);
+}
+.card.elite {
+  border-color: var(--purple);
+  box-shadow: 0 0 24px rgba(188, 140, 255, 0.15);
 }
 .badge {
   display: inline-block;
@@ -82,11 +89,11 @@ header p {
   border-radius: 12px;
   background: #1f6feb26;
   color: var(--accent);
-  margin-bottom: 12px;
 }
 .card h2 {
-  margin: 0 0 8px;
-  font-size: 18px;
+  margin: 10px 0 6px;
+  font-size: 19px;
+  font-weight: 600;
 }
 .card .desc {
   color: var(--dim);
@@ -98,12 +105,12 @@ header p {
   font-size: 26px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .price-sub {
   font-size: 12px;
   color: var(--dim);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .btn {
   display: block;
@@ -129,74 +136,22 @@ header p {
 .btn-polar:hover {
   background: #0050d8;
 }
-.btn-paypal {
-  background: #0070ba;
-  color: #fff;
-}
-.btn-paypal:hover {
-  background: #005ea6;
-}
 .btn-success {
   background: var(--good);
   color: #04121f;
 }
-.modal-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.modal {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  max-width: 620px;
-  width: 100%;
-  padding: 28px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-.token-box {
-  background: #0d1117;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 12px;
-  font-family: ui-monospace, monospace;
-  font-size: 12px;
-  color: var(--good);
-  word-break: break-all;
-  user-select: all;
-  margin: 12px 0;
-  max-height: 90px;
-  overflow-y: auto;
-}
-.code-box {
-  background: #0d1117;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 12px;
-  font-family: ui-monospace, monospace;
-  font-size: 12px;
-  color: var(--text);
-  margin: 12px 0;
-  overflow-x: auto;
-}
 .section-title {
   font-size: 18px;
-  margin: 32px 0 16px;
+  margin: 36px 0 16px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--line);
 }
 .notice {
   background: #1f6feb1a;
   border-left: 3px solid var(--polar-blue);
-  padding: 12px 16px;
-  border-radius: 0 6px 6px 0;
-  margin: 20px 0;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0 28px;
   color: var(--text);
   font-size: 13px;
 }
@@ -211,34 +166,33 @@ input, select {
 </style>
 <!-- Polar.sh Official Embedded Checkout SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.js" defer></script>
-<!-- PayPal SDK Fallback -->
-<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 </head>
 <body>
 
 <header>
   <div class="header-wrap">
-    <h1>Aether Commercial Software Store</h1>
-    <p>Automated Polar.sh Merchant of Record Licensing & Instant Digital Distribution</p>
+    <h1>Aether Systems Commercial Store</h1>
+    <p>Automated Polar.sh Merchant of Record Licensing & Instant Binary Package Distribution</p>
   </div>
 </header>
 
 <div class="container">
 
   <div class="notice">
-    ⚡ <strong>Instant Delivery & Automated Licensing:</strong> Powered by <strong>Polar.sh</strong>. Upon payment, your license key is generated automatically, and your software binary download is unlocked immediately on-screen and emailed to your inbox.
+    ⚡ <strong>Instant Delivery & Automated Licensing:</strong> Powered by <strong>Polar.sh</strong>. Upon payment, your license key is generated automatically, and your software binary download is unlocked immediately on-screen and emailed to your inbox. All products include in-app major update alerts.
   </div>
 
   <div class="grid">
-    <!-- Sentinel Kit (Official Polar.sh 1-Click Checkout) -->
+
+    <!-- 1. Sentinel Kit -->
     <div class="card featured">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#0062ff26; color:#58a6ff;">Flagship Release</span>
           <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
         </div>
         <h2>Sentinel Kit</h2>
-        <div class="desc">High-assurance AST pruner, PII scrubber, and cryptographic licensing guard for production monorepos.</div>
+        <div class="desc">High-assurance monorepo CI matrix pruner, schema drift detector, and automated PII scrubber.</div>
       </div>
       <div>
         <div class="price-tag">$39.99</div>
@@ -248,87 +202,126 @@ input, select {
           data-polar-checkout 
           data-polar-checkout-theme="dark" 
           class="btn btn-polar">
-          ⚡ Buy with Polar ($39.99)
+          ⚡ 1-Click Buy with Polar ($39.99)
         </a>
-        <button class="btn btn-paypal" style="margin-top:6px; font-size:12px; padding:6px 12px; opacity:0.85;" onclick="openCheckout('sentinel-kit', 'Sentinel Kit', 39.99)">
-          Or Checkout with PayPal
-        </button>
       </div>
     </div>
 
-    <!-- Hexane -->
+    <!-- 2. Hexane / Carbonation -->
     <div class="card">
       <div>
-        <span class="badge">Production</span>
-        <h2>Hexane / Carbonation</h2>
-        <div class="desc">High-concurrency carbon-based microservice runner and actor system.</div>
-      </div>
-      <div>
-        <div class="price-tag">$30.00</div>
-        <div class="price-sub">One-time payment &bull; Free Major Upgrades</div>
-        <button class="btn btn-paypal" onclick="openCheckout('hexane', 'Hexane / Carbonation', 30)">Purchase with PayPal</button>
-      </div>
-    </div>
-
-    <!-- MedCrypto -->
-    <div class="card">
-      <div>
-        <span class="badge">Clinical</span>
-        <h2>MedCrypto Suite</h2>
-        <div class="desc">HIPAA/GDPR-compliant zero-knowledge medical telemetry encryption.</div>
-      </div>
-      <div>
-        <div class="price-tag">$45.00</div>
-        <div class="price-sub">One-time payment &bull; Free Major Upgrades</div>
-        <button class="btn btn-paypal" onclick="openCheckout('medcrypto', 'MedCrypto Suite', 45)">Purchase with PayPal</button>
-      </div>
-    </div>
-
-    <!-- zk-HyperVM -->
-    <div class="card">
-      <div>
-        <span class="badge">Enterprise</span>
-        <h2>zk-HyperVM</h2>
-        <div class="desc">Deterministic bare-metal micro-hypervisor with ZK-SNARK execution proofs.</div>
-      </div>
-      <div>
-        <div class="price-tag">$240.00</div>
-        <div class="price-sub">One-time payment &bull; Priority Enterprise SLA</div>
-        <button class="btn btn-paypal" onclick="openCheckout('zk-hypervm', 'zk-HyperVM', 240)">Purchase with PayPal</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PayPal Fallback Modal -->
-  <div id="checkoutModal" class="modal-backdrop">
-    <div class="modal">
-      <div id="checkoutView">
-        <h3 id="checkoutTitle">Order Checkout</h3>
-        <p id="checkoutDesc" style="color:var(--dim);"></p>
-        <div id="paypal-button-container" style="margin:20px 0;"></div>
-        <button class="btn" style="background:var(--line); color:var(--text);" onclick="closeCheckout()">Cancel</button>
-      </div>
-
-      <div id="successView" style="display:none;">
-        <h3 style="color:var(--good);">🎉 Payment Successful!</h3>
-        <p>Your license and digital product package have been minted.</p>
-        
-        <label style="font-weight:600; font-size:12px; color:var(--dim);">YOUR CD-KEY / LICENSE TOKEN:</label>
-        <div id="licenseTokenDisplay" class="token-box"></div>
-        <button class="btn" style="background:var(--line); color:var(--text); margin-bottom:16px;" onclick="copyToken()">📋 Copy License Token</button>
-
-        <div style="display:flex; gap:10px; margin-bottom:16px;">
-          <a id="downloadPkgBtn" class="btn btn-success" href="#" target="_blank">📥 Download Package</a>
-          <button id="downloadKeyBtn" class="btn" style="background:#21262d; border:1px solid var(--line); color:var(--text);" onclick="downloadKeyFile()">💾 Save license.key</button>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge">Systems Language</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
         </div>
-
-        <label style="font-weight:600; font-size:12px; color:var(--dim);">QUICK ACTIVATION COMMAND:</label>
-        <pre class="code-box">mkdir -p ~/.aether && echo "<span id="codeTokenSpan">...</span>" > ~/.aether/license.key</pre>
-
-        <p style="font-size:12px; color:var(--dim);">A backup copy of your key and download link has also been sent to your email.</p>
-        <button class="btn" style="background:var(--line); color:var(--text); margin-top:10px;" onclick="closeCheckout()">Close</button>
+        <h2>Hexane / Carbonation</h2>
+        <div class="desc">High-performance Carbon language toolchain coupled with a 4-tier real-time distributed telemetry engine.</div>
+      </div>
+      <div>
+        <div class="price-tag">$24.99</div>
+        <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
+        <a 
+          href="https://buy.polar.sh/polar_cl_wwsS0Gng0lIIIZPyXHf7VDvzfhsLZj9SXWg6H4MOiLY" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark" 
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar ($24.99)
+        </a>
       </div>
     </div>
+
+    <!-- 3. MedCrypto Suite -->
+    <div class="card">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:#2ea44f26; color:#3fb950;">Clinical Privacy</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
+        </div>
+        <h2>MedCrypto Suite</h2>
+        <div class="desc">HIPAA/GDPR-compliant homomorphic RNS-CKKS encrypted multi-hospital clinical telemetry pipeline.</div>
+      </div>
+      <div>
+        <div class="price-tag">$69.99</div>
+        <div class="price-sub">One-time purchase &bull; Commercial License &bull; Free Major Upgrades</div>
+        <a 
+          href="https://buy.polar.sh/polar_cl_bpteW0uBNbtOUKSQxU2thl6NGEDOT8Y3Tsykh0YK1J5" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark" 
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar ($69.99)
+        </a>
+      </div>
+    </div>
+
+    <!-- 4. VMP_DEVIRT -->
+    <div class="card elite">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
+        </div>
+        <h2>VMP_DEVIRT</h2>
+        <div class="desc">Automated 64-bit devirtualization for VMProtect 3.x & Themida: Z3 SMT solving to clean LLVM IR recompilation.</div>
+      </div>
+      <div>
+        <div class="price-tag">$99.99</div>
+        <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
+        <a 
+          href="https://buy.polar.sh/polar_cl_wgyY05NgIw0vgcpNFPuXC9j2mDktczxSDZcev0B4kmX" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark" 
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar ($99.99)
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. zk-HyperVM -->
+    <div class="card elite">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:#d2992226; color:var(--gold);">Zero-Knowledge</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
+        </div>
+        <h2>zk-HyperVM</h2>
+        <div class="desc">Verifiable hardware-assisted virtualization via lookup-accelerated IVC folding over EPT & VMCS transitions.</div>
+      </div>
+      <div>
+        <div class="price-tag">$149.99</div>
+        <div class="price-sub">One-time purchase &bull; Enterprise SLA &bull; Free Major Upgrades</div>
+        <a 
+          href="https://buy.polar.sh/polar_cl_vbTRkzR92DuyjutnJn2HKfPExoJxLuT72ZcXW267HoZ" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark" 
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar ($149.99)
+        </a>
+      </div>
+    </div>
+
+    <!-- 6. Rusty Chain Kit -->
+    <div class="card">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:#f0883e26; color:#f0883e;">Web3 Security</span>
+          <span style="font-size:11px; color:var(--dim); font-weight:600;">Toolchain</span>
+        </div>
+        <h2>Rusty Chain Kit</h2>
+        <div class="desc">Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.</div>
+      </div>
+      <div>
+        <div class="price-tag">$59.99</div>
+        <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
+        <a 
+          href="https://polar.sh/aetherx86" 
+          target="_blank"
+          class="btn btn-polar"
+          style="background:#21262d; border:1px solid var(--line); color:var(--text);">
+          Visit Polar Storefront
+        </a>
+      </div>
+    </div>
+
   </div>
 
   <!-- Polar License Key Validation & Update Section -->
@@ -338,6 +331,14 @@ input, select {
       Bought via Polar.sh? Enter your <strong>Polar License Key</strong> or check if a new major release (<code>X.0.0</code>) is available:
     </p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+      <select id="selectProduct" style="min-width:180px;">
+        <option value="sentinel-kit">Sentinel Kit</option>
+        <option value="hexane">Hexane / Carbonation</option>
+        <option value="medcrypto">MedCrypto Suite</option>
+        <option value="vmp-devirt">VMP_DEVIRT</option>
+        <option value="zk-hypervm">zk-HyperVM</option>
+        <option value="rusty-chain-kit">Rusty Chain Kit</option>
+      </select>
       <input id="polarKeyInput" type="text" placeholder="Enter Polar License Key (e.g. AETH_XXXX or key)" style="flex:2; min-width:240px;">
       <button class="btn btn-polar" style="width:auto; padding:0 20px;" onclick="validatePolarKey()">Validate with Polar API</button>
       <button class="btn btn-success" style="width:auto; padding:0 20px;" onclick="checkVersion()">Check for Updates</button>
@@ -350,8 +351,6 @@ input, select {
 
 <script>
 const POLAR_ORG_ID = '9ebf8af0-a566-4fa7-8869-07fff0b13c7a';
-let currentProduct = null;
-let currentToken = null;
 
 async function validatePolarKey() {
   const key = document.getElementById('polarKeyInput').value.trim();
@@ -396,6 +395,7 @@ async function validatePolarKey() {
 }
 
 async function checkVersion() {
+  const productKey = document.getElementById('selectProduct').value;
   const resDiv = document.getElementById('updateResult');
   resDiv.style.display = 'block';
   resDiv.innerHTML = '<span style="color:var(--dim);">Checking versions registry...</span>';
@@ -403,10 +403,10 @@ async function checkVersion() {
   try {
     const res = await fetch('/releases/versions.json');
     const data = await res.json();
-    const meta = data.products?.['sentinel-kit'];
+    const meta = data.products?.[productKey];
 
     if (!meta) {
-      resDiv.innerHTML = '<span style="color:var(--bad);">Sentinel Kit not found in versions registry.</span>';
+      resDiv.innerHTML = `<span style="color:var(--bad);">${productKey} not found in versions registry.</span>`;
       return;
     }
 
@@ -424,64 +424,6 @@ async function checkVersion() {
   } catch (err) {
     resDiv.innerHTML = `<span style="color:var(--bad);">Error reading versions registry: ${err.message}</span>`;
   }
-}
-
-function openCheckout(productId, name, price) {
-  currentProduct = productId;
-  document.getElementById('checkoutTitle').innerText = `Checkout: ${name}`;
-  document.getElementById('checkoutDesc').innerText = `Total: $${price}.00 USD (Includes commercial perpetual license)`;
-  document.getElementById('checkoutView').style.display = 'block';
-  document.getElementById('successView').style.display = 'none';
-  document.getElementById('checkoutModal').style.display = 'flex';
-
-  const container = document.getElementById('paypal-button-container');
-  container.innerHTML = '';
-
-  if (window.paypal) {
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            description: name,
-            custom_id: productId,
-            amount: { value: price.toString() }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          const payerEmail = details.payer?.email_address || 'customer@aetherx86.com';
-          const dummyToken = 'AETH-LIC.eyJpc3MiOiJBZXRoZXIgU3lzdGVtcyBMYWIiLCJhdWQiOiI' + btoa(payerEmail).replace(/=/g,'') + 'IsInN1YiI6I' + productId + 'In0.SAMPLE_SIGNATURE';
-          currentToken = dummyToken;
-          document.getElementById('checkoutView').style.display = 'none';
-          document.getElementById('successView').style.display = 'block';
-          document.getElementById('licenseTokenDisplay').innerText = dummyToken;
-          document.getElementById('codeTokenSpan').innerText = dummyToken;
-          document.getElementById('downloadPkgBtn').href = `/releases/${productId}-latest.tar.gz`;
-        });
-      }
-    }).render('#paypal-button-container');
-  }
-}
-
-function closeCheckout() {
-  document.getElementById('checkoutModal').style.display = 'none';
-}
-
-function copyToken() {
-  if (currentToken) {
-    navigator.clipboard.writeText(currentToken);
-    alert('License Token copied to clipboard!');
-  }
-}
-
-function downloadKeyFile() {
-  if (!currentToken) return;
-  const blob = new Blob([currentToken], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'license.key';
-  a.click();
 }
 </script>
 
