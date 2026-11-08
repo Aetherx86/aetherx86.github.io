@@ -1,6 +1,6 @@
 {
   "$schema": "https://aetherx86.github.io/schemas/release-manifest.v1.json",
-  "updated_at": "2026-11-08T20:40:00Z",
+  "updated_at": "2026-11-08T21:30:00Z",
   "organization_id": "9ebf8af0-a566-4fa7-8869-07fff0b13c7a",
   "products": {
     "sentinel-kit": {
@@ -90,6 +90,17 @@
       "download_url": "https://aetherx86.github.io/releases/rea-v7.0.3.tar.gz",
       "changelog": "13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler & Pseudo-C decompiler.",
       "min_license_version": "7.0.0"
+    },
+    "aether": {
+      "name": "Aether Sovereign Desktop Pro",
+      "latest_version": "0.1.1",
+      "major_version": 0,
+      "release_date": "2026-11-08",
+      "price": "$49.99",
+      "polar_checkout_url": "",
+      "download_url": "https://github.com/Aetherx86/aetherx86.github.io/releases/download/v0.1.1/Aether.zip",
+      "changelog": "Unified sovereign platform: 8-module HyperOffice suite, Fafnir AES-256-GCM vault, Sleipnir Anti-DPI engine, multi-tab Tor browser, local Apple Silicon M4/ANE AI, and ctxflow WASM High Table council.",
+      "min_license_version": "0.1.0"
     }
   }
 }

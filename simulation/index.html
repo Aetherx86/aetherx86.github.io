@@ -415,7 +415,30 @@
       flex-wrap: wrap;
       gap: 24px;
     }
-  </style>
+  
+/* Navigation Dropdown Menus */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown-trigger {
+  background: transparent; border: none; color: var(--text-muted); font-family: inherit;
+  font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 6px 10px; display: inline-flex;
+  align-items: center; gap: 5px; transition: color 0.18s ease;
+}
+.nav-dropdown-trigger:hover, .nav-dropdown:hover .nav-dropdown-trigger { color: #f8fafc; }
+.dropdown-chevron { transition: transform 0.2s ease; opacity: 0.7; }
+.nav-dropdown:hover .dropdown-chevron { transform: rotate(180deg); opacity: 1; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 4px); left: 0; min-width: 270px; background: #0b1019;
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 8px; box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
+  padding: 8px; display: none; z-index: 2000; backdrop-filter: blur(14px);
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; animation: fadeInNav 0.15s ease-out; }
+.nav-dropdown-menu a { display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none; border-radius: 6px; transition: all 0.14s ease; }
+.nav-dropdown-menu a:hover { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+.dropdown-item-title { display: block; font-size: 0.88rem; font-weight: 600; color: #f1f5f9; }
+.dropdown-item-desc { display: block; font-size: 0.74rem; color: #64748b; margin-top: 2px; }
+.dropdown-divider { height: 1px; background: rgba(255, 255, 255, 0.08); margin: 6px 0; }
+
+</style>
 </head>
 <body id="top">
   <div class="bg-grid"></div>
@@ -426,17 +449,54 @@
         <span class="brand-tag">SIMULATION LAB</span>
       </a>
       <nav id="main-nav">
-        <a href="../">← Main Portal</a>
-        <a href="#defense-matrix">Threat Matrix</a>
-        <a href="#simulator">DDL Analyzer</a>
-        <a href="../products/">Product Specs</a>
-        <a href="../shop/" style="color:#38bdf8;font-weight:700;">Store ⚡</a>
-        <a href="../#enterprise">Enterprise Hub</a>
+        <a href="../#products">Products</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" type="button">
+            Simulation
+            <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#defense-matrix">
+              <span class="dropdown-item-title">Threat Defense Matrix</span>
+              <span class="dropdown-item-desc">5-layer attack rail &amp; dynamic laser mitigation</span>
+            </a>
+            <a href="#simulator">
+              <span class="dropdown-item-title">DDL Lock Risk Analyzer</span>
+              <span class="dropdown-item-desc">Pre-flight AST lock detection &amp; hazard classification</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="../products/" style="color:#38bdf8;font-weight:600;">Product Specs &amp; Demos</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" type="button">
+            About Us
+            <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Commercial Licensing</span>
+              <span class="dropdown-item-desc">Perpetual title, warranty &amp; governance terms</span>
+            </a>
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Verification Benchmarks</span>
+              <span class="dropdown-item-desc">Empirical telemetry &amp; latency measurements</span>
+            </a>
+            <a href="../#publications">
+              <span class="dropdown-item-title">Research Papers</span>
+              <span class="dropdown-item-desc">Formal verification, cryptographic protocols &amp; zkVMs</span>
+            </a>
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Security Audits</span>
+              <span class="dropdown-item-desc">Private retainers &amp; binary devirtualization reviews</span>
+            </a>
+          </div>
+        </div>
+        <a href="../#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
         <a href="../products/" class="btn-sample" style="text-decoration:none;">View Products</a>
-        <a href="../shop/" class="btn-nav-buy" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <a href="../shop/" class="btn-nav-buy" style="display:inline-flex;align-items:center;gap:6px;">
           Store
         </a>
       </div>

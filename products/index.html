@@ -407,7 +407,30 @@
       background: #0050d4;
       box-shadow: 0 4px 18px rgba(0, 98, 255, 0.35);
     }
-  </style>
+  
+/* Navigation Dropdown Menus */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown-trigger {
+  background: transparent; border: none; color: var(--text-muted); font-family: inherit;
+  font-size: 0.9rem; font-weight: 500; cursor: pointer; padding: 6px 10px; display: inline-flex;
+  align-items: center; gap: 5px; transition: color 0.18s ease;
+}
+.nav-dropdown-trigger:hover, .nav-dropdown:hover .nav-dropdown-trigger { color: #f8fafc; }
+.dropdown-chevron { transition: transform 0.2s ease; opacity: 0.7; }
+.nav-dropdown:hover .dropdown-chevron { transform: rotate(180deg); opacity: 1; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 4px); left: 0; min-width: 270px; background: #0b1019;
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 8px; box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
+  padding: 8px; display: none; z-index: 2000; backdrop-filter: blur(14px);
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; animation: fadeInNav 0.15s ease-out; }
+.nav-dropdown-menu a { display: block; padding: 8px 12px; color: #cbd5e1; text-decoration: none; border-radius: 6px; transition: all 0.14s ease; }
+.nav-dropdown-menu a:hover { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+.dropdown-item-title { display: block; font-size: 0.88rem; font-weight: 600; color: #f1f5f9; }
+.dropdown-item-desc { display: block; font-size: 0.74rem; color: #64748b; margin-top: 2px; }
+.dropdown-divider { height: 1px; background: rgba(255, 255, 255, 0.08); margin: 6px 0; }
+
+</style>
 </head>
 <body id="top">
   <div class="bg-grid"></div>
@@ -419,15 +442,55 @@
         <span class="brand-tag">PRODUCT LABS</span>
       </a>
       <nav id="main-nav">
-        <a href="../">Home</a>
-        <a href="../simulation/">Simulation Lab ⚡</a>
-        <a href="../shop/" style="color:#38bdf8;font-weight:700;">Store ⚡</a>
-        <a href="../#enterprise">Enterprise Hub</a>
+        <a href="../#products">Products</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" type="button">
+            Simulation
+            <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../simulation/#defense-matrix">
+              <span class="dropdown-item-title">Threat Defense Matrix</span>
+              <span class="dropdown-item-desc">5-layer attack rail &amp; dynamic laser mitigation</span>
+            </a>
+            <a href="../simulation/#simulator">
+              <span class="dropdown-item-title">DDL Lock Risk Analyzer</span>
+              <span class="dropdown-item-desc">Pre-flight AST lock detection &amp; hazard classification</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="../simulation/" style="color:#38bdf8;font-weight:600;">Open Simulation Lab</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger" type="button">
+            About Us
+            <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Commercial Licensing</span>
+              <span class="dropdown-item-desc">Perpetual title, warranty &amp; governance terms</span>
+            </a>
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Verification Benchmarks</span>
+              <span class="dropdown-item-desc">Empirical telemetry &amp; latency measurements</span>
+            </a>
+            <a href="../#publications">
+              <span class="dropdown-item-title">Research Papers</span>
+              <span class="dropdown-item-desc">Formal verification, cryptographic protocols &amp; zkVMs</span>
+            </a>
+            <a href="../#enterprise">
+              <span class="dropdown-item-title">Security Audits</span>
+              <span class="dropdown-item-desc">Private retainers &amp; binary devirtualization reviews</span>
+            </a>
+          </div>
+        </div>
+        <a href="../#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
+        <a href="../simulation/" class="btn-sample" style="text-decoration:none;border-color:rgba(56,189,248,0.4);color:#38bdf8;">Simulation Lab</a>
         <a href="../shop/" class="btn-nav-buy" style="display:inline-flex;align-items:center;gap:6px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          Instant Checkout
+          Store
         </a>
       </div>
     </div>
@@ -437,13 +500,14 @@
   <div class="product-pills-bar">
     <div class="container">
       <div class="pills-scroll">
-        <a href="#sentinel-kit" class="prod-pill active">🛡️ Sentinel Kit ($39.99)</a>
-        <a href="#hexane" class="prod-pill">⚡ Hexane Compiler ($24.99)</a>
-        <a href="#rea" class="prod-pill">🔍 REA 7.0 (Polar Soon)</a>
-        <a href="#vmp-devirt" class="prod-pill">🔓 VMP_DEVIRT ($99.99)</a>
-        <a href="#zk-hypervm" class="prod-pill">🧮 zk-HyperVM ($149.99)</a>
-        <a href="#medcrypto" class="prod-pill">🏥 MedCrypto Suite ($69.99)</a>
-        <a href="#rusty-chain-kit" class="prod-pill">⛓️ Rusty Chain Kit</a>
+        <a href="#aether" class="prod-pill active">Aether Desktop ($49.99)</a>
+        <a href="#sentinel-kit" class="prod-pill">Sentinel Kit ($39.99)</a>
+        <a href="#hexane" class="prod-pill">Hexane Compiler ($24.99)</a>
+        <a href="#rea" class="prod-pill">REA 7.0 (Commercial)</a>
+        <a href="#vmp-devirt" class="prod-pill">VMP_DEVIRT ($99.99)</a>
+        <a href="#zk-hypervm" class="prod-pill">zk-HyperVM ($149.99)</a>
+        <a href="#medcrypto" class="prod-pill">MedCrypto Suite ($69.99)</a>
+        <a href="#rusty-chain-kit" class="prod-pill">Rusty Chain Kit ($59.99)</a>
       </div>
     </div>
   </div>
@@ -479,6 +543,74 @@
     </div>
 
     <!-- ==================== PRODUCT 1: SENTINEL KIT ==================== -->
+    
+    <!-- AETHER SOVEREIGN DESKTOP -->
+    <section id="aether" class="product-doc-card">
+      <div class="product-header">
+        <div>
+          <span class="card-badge">SOVEREIGN HYPEROFFICE &bull; AIR-GAPPED WORKSTATION</span>
+          <h2 class="product-title">Aether Sovereign Desktop Pro</h2>
+          <p class="product-tagline">
+            Complete air-gapped sovereign intelligence platform unifying 8-module office productivity, multi-tab Tor browser, local neural inference, zero-knowledge vault, and anti-DPI VPN.
+          </p>
+        </div>
+        <div class="product-cta-box">
+          <div class="product-price">$49.99</div>
+          <div class="product-tier">Perpetual Commercial License &bull; macOS Apple Silicon</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+            <a href="../aether/" class="btn-primary" style="text-align:center;text-decoration:none;">
+              Try Interactive Web Trial (WASM) &rarr;
+            </a>
+            <a href="https://github.com/Aetherx86/aetherx86.github.io/releases/download/v0.1.1/Aether.zip" 
+               class="btn-secondary" 
+               style="text-align:center;text-decoration:none;">
+              Download Desktop v0.1.1 (223 MB) &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-col">
+          <h3>Architectural Specifications</h3>
+          <ul class="spec-list">
+            <li><strong>Package Name:</strong> <code>aether</code> v0.1.1 (Release 2026.11)</li>
+            <li><strong>Target Platform:</strong> macOS (Apple Silicon arm64 / M1, M2, M3, M4)</li>
+            <li><strong>8 Office Modules:</strong> Word (DOCX), Excel (XLSX), Slides (PPTX), PDF annotator, Markdown, Mindmaps, SQLite, Knowledge Graph</li>
+            <li><strong>Cryptographic Vault:</strong> Fafnir AES-256-GCM sealed via PBKDF2 (100,000 rounds)</li>
+            <li><strong>Anti-DPI Engine:</strong> Sleipnir TCP raw packet fragmentation defeating SNI firewall filtering</li>
+            <li><strong>Network Anonymity:</strong> Aetherum embedded Tor onion routing daemon + tracker blocker</li>
+            <li><strong>Local AI Acceleration:</strong> Apple Neural Engine (ANE) via MLX (DeepSeek-R1 Distill 14B)</li>
+          </ul>
+        </div>
+        <div class="spec-col">
+          <h3>Privacy &amp; Air-Gap Guarantees</h3>
+          <ul class="spec-list">
+            <li><strong>Zero External Cloud Calls:</strong> All document editing, local LLMs, and cryptographic sealing run strictly within local process boundaries.</li>
+            <li><strong>Zero Plaintext at Rest:</strong> All temp files and undo buffers are memory-scrubbed on close.</li>
+            <li><strong>WASM Web Compatibility:</strong> Core office engine, vault cryptography, and AI council run 100% in-browser on the Web Trial.</li>
+            <li><strong>Verification Tests:</strong> 289 comprehensive verification points passing with 100% green status.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cli-box">
+        <div class="cli-header">Aether System Architecture Diagram</div>
+        <pre class="cli-body"><code>                                  ┌─────────────────────────────────────────┐
+                                  │             AETHER CORE                 │
+                                  │   Headless Document Engine & MCP Host   │
+                                  └────────────────────┬────────────────────┘
+                                                       │
+  ┌────────────────────────┬────────────────┼────────────────────────┬────────────────────────┐
+  ▼                        ▼                ▼                        ▼                        ▼
+┌──────────────────┐ ┌───────────┐ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
+│  HYPEROFFICE     │ │  FAFNIR   │ │  MÍMISBRUNNR     │ │  SLEIPNIR        │ │  AETHERUM        │
+│  8-Module Suite  │ │  AES-256  │ │  Local Neural AI │ │  Anti-DPI VPN    │ │  Multi-Tab Tor   │
+│  Docs/Sheets/PDF │ │  Vault    │ │  DeepSeek-R1 14B │ │  TCP Frag Engine │ │  Privacy Browser │
+└──────────────────┘ └───────────┘ └──────────────────┘ └──────────────────┘ └──────────────────┘</code></pre>
+      </div>
+    </section>
+
     <section id="sentinel-kit" class="product-section">
       <div class="product-header">
         <div>
