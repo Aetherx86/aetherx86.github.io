@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <title>Alexandrite: Deterministic DFA Regex & Lexer Workbench</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <span class="header-badge">LIVE WEBASSEMBLY WORKBENCH</span>
+      <h1>Alexandrite DFA Engine</h1>
+      <p>Interactive compile-time and runtime Deterministic Finite Automata (DFA) regular expression matcher running freestanding WebAssembly directly in your browser with guaranteed O(n) execution and zero backtracking.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <label for="pattern-input">Regular Expression Pattern</label>
+        <div id="wasm-status" class="status-pill">Loading WebAssembly...</div>
+      </div>
+      <div class="row">
+        <input type="text" id="pattern-input" value="\d\d\d-\d\d-\d\d\d\d" placeholder="Enter regex pattern...">
+        <button class="btn-outline" onclick="setPreset('\\d\\d\\d-\\d\\d-\\d\\d\\d\\d', 'Audit log: SSN 123-45-6789 verified')">SSN PII</button>
+        <button class="btn-outline" onclick="setPreset('GET|POST|DELETE|PATCH', 'POST')">HTTP Methods</button>
+        <button class="btn-outline" onclick="setPreset('[a-zA-Z_][a-zA-Z0-9_]*', 'user_token_99')">Identifier</button>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">DFA States</div>
+          <div class="value" id="metric-states">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">WASM Compile Latency</div>
+          <div class="value" id="metric-compile-time">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Backtracking Steps</div>
+          <div class="value" id="metric-backtracking">0 (Guaranteed)</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Execution Mode</div>
+          <div class="value" style="color: var(--accent);">wasm32-freestanding</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <label for="sample-input">Test Input String / Stream Buffer</label>
+        <div id="match-result" class="status-pill">Evaluating...</div>
+      </div>
+      <textarea id="sample-input">Audit record login event: customer SSN 123-45-6789 authenticated from 192.168.1.1</textarea>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">Match Time</div>
+          <div class="value" id="metric-match-time">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Matched Substring Span</div>
+          <div class="value" id="metric-span">-</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <label>Highlighted Search Extraction</label>
+        <div id="span-preview" style="background: #090d13; border: 1px solid var(--line); border-radius: 6px; padding: 12px; margin-top: 6px; font-family: ui-monospace, monospace; white-space: pre-wrap;">-</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <label>DFA State Transition Table (Sample Sample Matrix)</label>
+      <table>
+        <thead>
+          <tr>
+            <th>From State</th>
+            <th>Byte / Character</th>
+            <th>Next State</th>
+          </tr>
+        </thead>
+        <tbody id="transition-table-body">
+          <tr><td colspan="3" style="color: var(--dim)">Loading table...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="../" style="color: var(--dim); text-decoration: none; font-size: 13px;">&larr; Back to Aether Systems & Research Lab Portal</a>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
