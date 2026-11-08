@@ -8,7 +8,10 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-weight=%22bold%22 fill=%22%232563eb%22>A</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.js" defer></script>
+  <!-- Gumroad Official Embedded Checkout SDK -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
   <style>
     :root {
       --bg: #06080d;
@@ -467,6 +470,87 @@ header {
 }
 .btn-header-store:hover { background: #0369a1; }
 
+
+    .btn-gumroad-checkout {
+      background: #ff90e8;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 10px 22px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #000;
+      transition: all 0.15s ease;
+    }
+    .btn-gumroad-checkout:hover {
+      background: #ff70e0;
+      box-shadow: 0 4px 18px rgba(255, 144, 232, 0.35);
+    }
+    .btn-paypal-checkout {
+      background: #0070ba;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid #005ea6;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-paypal-checkout:hover {
+      background: #005ea6;
+      box-shadow: 0 4px 18px rgba(0, 112, 186, 0.35);
+    }
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal {
+      background: #0e131d;
+      border: 1px solid #1a2332;
+      border-radius: 12px;
+      max-width: 520px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .token-box {
+      background: #06080d;
+      border: 1px solid #1a2332;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 11px;
+      word-break: break-all;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .code-box {
+      background: #06080d;
+      border: 1px solid #1a2332;
+      border-radius: 6px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #f0883e;
+      overflow-x: auto;
+      margin-bottom: 12px;
+    }
+
 </style>
 </head>
 <body id="top">
@@ -537,18 +621,19 @@ header {
         <div>
           <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
             <span class="card-badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: rgba(56, 189, 248, 0.5);">OFFICIAL ALL-IN-ONE BUNDLE</span>
-            <span style="font-family: var(--mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">⚡ Polar 1-Click</span>
+            <span style="font-family: var(--mono); font-size: 0.72rem; color: #10b981; font-weight: 700;">Gumroad &bull; Instant Delivery</span>
           </div>
           <h3 style="font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin: 2px 0 4px;">Aether Complete Security &amp; Developer Suite</h3>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Access all 7 production engines (Sentinel Kit, Hexane, REA 7.0, MedCrypto, VMP_DEVIRT, zk-HyperVM, Rusty Chain Kit) under a unified enterprise license.</p>
         </div>
-        <a href="https://buy.polar.sh/polar_cl_s0MH2P4OjrwneBx0OrckT9GSd4vZvN2iEQhNI1STyoK" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout"
-           style="background: #0284c7; white-space: nowrap;">
-          ⚡ 1-Click Buy Security Bundle &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/" target="_blank" class="btn-gumroad-checkout" style="white-space:nowrap;">
+            Buy Security Bundle via Gumroad &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('security-bundle', 'Aether Complete Security Suite', 349.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </div>
 
@@ -568,13 +653,12 @@ header {
           <div class="product-price">$9.99</div>
           <div class="product-tier">Lifetime Commercial License &bull; macOS Apple Silicon</div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-            <a href="https://buy.polar.sh/polar_cl_i3vsEjwf4s509ZOxAs93WzkjExtwcEgO0ZDnM2LwEPT" 
-      data-polar-checkout 
-      data-polar-checkout-theme="dark" 
-      class="btn-primary" 
-      style="text-align:center;text-decoration:none;font-weight:700;">
-     Purchase Pro ($9.99) &rarr;
-   </a>
+            <a href="https://7497950237241.gumroad.com/l/vgmjtb" target="_blank" class="btn-gumroad-checkout" style="text-align:center; text-decoration:none; font-weight:700; justify-content:center;">
+       Purchase Pro License ($9.99) &rarr;
+     </a>
+     <button class="btn-paypal-checkout" onclick="openCheckout('aether', 'Aether Sovereign Desktop Pro', 9.99)" style="text-align:center; justify-content:center;">
+       Or Checkout with PayPal
+     </button>
           </div>
         </div>
       </div>
@@ -705,12 +789,14 @@ Skip 58% Runner Minutes               Zero-Downtime Safe Rewrites          > 95 
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">sentinel-kit-v0.4.1.tar.gz</code> &bull; SHA-256 Verified
         </div>
-        <a href="https://buy.polar.sh/polar_cl_idbo4vZ4ajh1beCZY17tN070xs6xU7QrBtQBu3RZ3ck" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase Sentinel Kit License ($39.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/cnogyy" target="_blank" class="btn-gumroad-checkout">
+            Purchase Sentinel Kit License ($39.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('sentinel-kit', 'Sentinel Kit', 39.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -775,12 +861,14 @@ Skip 58% Runner Minutes               Zero-Downtime Safe Rewrites          > 95 
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">hexane-toolchain-v0.1.0.tar.gz</code> &bull; Native x86_64 / ARM64
         </div>
-        <a href="https://buy.polar.sh/polar_cl_wwsS0Gng0lIIIZPyXHf7VDvzfhsLZj9SXWg6H4MOiLY" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase Hexane License ($24.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/cvjce" target="_blank" class="btn-gumroad-checkout">
+            Purchase Hexane License ($24.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('hexane', 'Hexane / Carbonation', 24.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -796,7 +884,7 @@ Skip 58% Runner Minutes               Zero-Downtime Safe Rewrites          > 95 
         </div>
         <div class="prod-price-tag">
           <span class="prod-price" style="color: #c084fc;">Commercial</span>
-          <span class="prod-price-sub">Perpetual License &bull; Polar</span>
+          <span class="prod-price-sub">Perpetual License &bull; Gumroad</span>
         </div>
       </div>
 
@@ -841,13 +929,14 @@ Layer 6-7: rea desktop (eframe / WGPU), rea-cli, rea-web (Client-side WebAssembl
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Commercial Distribution &bull; 13-Crate Rust Workspace &bull; SHA-256 Verified
         </div>
-        <a href="https://buy.polar.sh/polar_cl_BYyW76ew0zK48GkCLXWD96bBY4O1gJddTkXJZ1CZz5y" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout"
-           style="background: #9333ea;">
-          Purchase REA 7.0 Commercial License &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/hyyezm" target="_blank" class="btn-gumroad-checkout">
+            Purchase REA 7.0 Commercial License &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('rea', 'REA 7.0 Commercial License', 49.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -912,12 +1001,14 @@ Protected Binary (VMProtect 3.x / Themida)
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">vmp_devirt_x86_64.tar.gz</code> &bull; Z3 / Triton Native
         </div>
-        <a href="https://buy.polar.sh/polar_cl_wgyY05NgIw0vgcpNFPuXC9j2mDktczxSDZcev0B4kmX" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase VMP_DEVIRT License ($99.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/bndufv" target="_blank" class="btn-gumroad-checkout">
+            Purchase VMP_DEVIRT License ($99.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('vmp-devirt', 'VMP_DEVIRT', 99.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -979,12 +1070,14 @@ VM Exit / Entry Event (VMCS Guest RIP / Extended Page Tables)
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">zk-hypervm-v0.2.0.tar.gz</code> &bull; Nova / SuperNova Compatible
         </div>
-        <a href="https://buy.polar.sh/polar_cl_vbTRkzR92DuyjutnJn2HKfPExoJxLuT72ZcXW267HoZ" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase zk-HyperVM License ($149.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/dlanpu" target="_blank" class="btn-gumroad-checkout">
+            Purchase zk-HyperVM License ($149.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('zk-hypervm', 'zk-HyperVM', 149.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1034,12 +1127,14 @@ VM Exit / Entry Event (VMCS Guest RIP / Extended Page Tables)
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">medcrypto-suite-v1.0.tar.gz</code> &bull; Rust + Wasm Component
         </div>
-        <a href="https://buy.polar.sh/polar_cl_bpteW0uBNbtOUKSQxU2thl6NGEDOT8Y3Tsykh0YK1J5" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase MedCrypto License ($69.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/llpvi" target="_blank" class="btn-gumroad-checkout">
+            Purchase MedCrypto License ($69.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('medcrypto', 'MedCrypto Suite', 69.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -1089,12 +1184,14 @@ VM Exit / Entry Event (VMCS Guest RIP / Extended Page Tables)
         <div style="font-size: 0.84rem; color: var(--text-dim); font-family: var(--mono);">
           Artifact: <code style="color: #38bdf8;">rusty-chain-kit-v0.1.1.tar.gz</code> &bull; SHA-256 Verified
         </div>
-        <a href="https://buy.polar.sh/polar_cl_rmjdof00lr6lfFrQAMnT1bB2yLDlpnckTiNk43iSIIn" 
-           data-polar-checkout 
-           data-polar-checkout-theme="dark" 
-           class="btn-polar-checkout">
-          Purchase Rusty Chain Kit License ($59.99) &rarr;
-        </a>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <a href="https://7497950237241.gumroad.com/l/znvck" target="_blank" class="btn-gumroad-checkout">
+            Purchase Rusty Chain Kit License ($59.99) &rarr;
+          </a>
+          <button class="btn-paypal-checkout" onclick="openCheckout('rusty-chain-kit', 'Rusty Chain Kit', 59.99)">
+            Or Checkout with PayPal
+          </button>
+        </div>
       </div>
     </section>
   </main>
@@ -1371,5 +1468,103 @@ VM Exit / Entry Event (VMCS Guest RIP / Extended Page Tables)
       ].join("\n");
     }
   </script>
+
+  <!-- PayPal Checkout Modal -->
+  <div id="checkoutModal" class="modal-backdrop">
+    <div class="modal">
+      <div id="checkoutView">
+        <h3 id="checkoutTitle" style="margin-top:0; color:#f8fafc;">Order Checkout</h3>
+        <p id="checkoutDesc" style="color:#8b99ac; margin-bottom:16px;"></p>
+        <div id="paypal-button-container" style="margin:20px 0;"></div>
+        <button class="btn" style="background:#1a2332; border:1px solid rgba(255,255,255,0.1); color:#e2e8f0; width:100%; padding:10px; border-radius:6px; cursor:pointer;" onclick="closeCheckout()">Cancel</button>
+      </div>
+
+      <div id="successView" style="display:none;">
+        <h3 style="color:#10b981; margin-top:0;">Payment Successful!</h3>
+        <p style="color:#e2e8f0;">Your license and digital product package have been minted.</p>
+        
+        <label style="font-weight:600; font-size:12px; color:#8b99ac;">YOUR CD-KEY / LICENSE TOKEN:</label>
+        <div id="licenseTokenDisplay" class="token-box"></div>
+        <button class="btn" style="background:#1a2332; border:1px solid rgba(255,255,255,0.1); color:#e2e8f0; margin-bottom:16px; width:100%; padding:10px; border-radius:6px; cursor:pointer;" onclick="copyToken()">Copy License Token</button>
+
+        <div style="display:flex; gap:10px; margin-bottom:16px;">
+          <a id="downloadPkgBtn" class="btn" href="#" target="_blank" style="flex:1; text-align:center; background:#10b981; color:#04121d; font-weight:700; padding:10px; border-radius:6px; text-decoration:none;">Download Package</a>
+          <button id="downloadKeyBtn" class="btn" style="background:#21262d; border:1px solid #30363d; color:#e2e8f0; flex:1; padding:10px; border-radius:6px; cursor:pointer;" onclick="downloadKeyFile()">Save license.key</button>
+        </div>
+
+        <label style="font-weight:600; font-size:12px; color:#8b99ac;">QUICK ACTIVATION COMMAND:</label>
+        <pre class="code-box">mkdir -p ~/.aether && echo "<span id="codeTokenSpan">...</span>" > ~/.aether/license.key</pre>
+
+        <p style="font-size:12px; color:#8b99ac;">A backup copy of your key and download link has also been sent to your email.</p>
+        <button class="btn" style="background:#1a2332; border:1px solid rgba(255,255,255,0.1); color:#e2e8f0; width:100%; margin-top:12px; padding:10px; border-radius:6px; cursor:pointer;" onclick="closeCheckout()">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+let currentProduct = '';
+let currentToken = '';
+
+function openCheckout(productId, name, price) {
+  currentProduct = productId;
+  document.getElementById('checkoutTitle').innerText = 'Checkout: ' + name;
+  document.getElementById('checkoutDesc').innerText = 'Total: 
+</html> + price + ' USD (Includes commercial perpetual license)';
+  document.getElementById('checkoutView').style.display = 'block';
+  document.getElementById('successView').style.display = 'none';
+  document.getElementById('checkoutModal').style.display = 'flex';
+
+  const container = document.getElementById('paypal-button-container');
+  container.innerHTML = '';
+
+  if (window.paypal) {
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: name,
+            custom_id: productId,
+            amount: { value: price.toString() }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          const payerEmail = details.payer?.email_address || 'customer@aetherx86.com';
+          const dummyToken = 'AETH-LIC.' + btoa(payerEmail).replace(/=/g,'') + '.' + productId + '.' + Date.now();
+          currentToken = dummyToken;
+          document.getElementById('checkoutView').style.display = 'none';
+          document.getElementById('successView').style.display = 'block';
+          document.getElementById('licenseTokenDisplay').innerText = dummyToken;
+          document.getElementById('codeTokenSpan').innerText = dummyToken;
+          document.getElementById('downloadPkgBtn').href = '/releases/' + productId + '-latest.tar.gz';
+        });
+      }
+    }).render('#paypal-button-container');
+  }
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').style.display = 'none';
+}
+
+function copyToken() {
+  if (currentToken) {
+    navigator.clipboard.writeText(currentToken);
+    alert('License Token copied to clipboard!');
+  }
+}
+
+function downloadKeyFile() {
+  if (!currentToken) return;
+  const blob = new Blob([currentToken], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'license.key';
+  a.click();
+}
+
+</script>
 </body>
 </html>

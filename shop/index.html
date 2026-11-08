@@ -163,9 +163,90 @@ input, select {
   padding: 8px 12px;
   font: inherit;
 }
+
+.btn-gumroad {
+  background: #ff90e8;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: 700;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+.btn-gumroad:hover {
+  background: #ff70e0;
+  transform: translateY(-1px);
+}
+.btn-paypal {
+  background: #0070ba;
+  color: #fff;
+  border: 1px solid #005ea6;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  margin-top: 6px;
+  display: block;
+  text-align: center;
+}
+.btn-paypal:hover {
+  background: #005ea6;
+}
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  max-width: 520px;
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.token-box {
+  background: #0d1117;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 11px;
+  word-break: break-all;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.code-box {
+  background: #0d1117;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #f0883e;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
 </style>
-<!-- Polar.sh Official Embedded Checkout SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.js" defer></script>
+<!-- Gumroad Official Embedded Checkout SDK -->
+<script src="https://gumroad.com/js/gumroad.js"></script>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 </head>
 <body>
 
@@ -184,7 +265,7 @@ input, select {
 <div class="container">
 
   <div class="notice">
-    <strong>Instant Delivery & Automated Licensing:</strong> Powered by <strong>Polar.sh</strong>. Upon payment, your license key is generated automatically, and your software binary download is unlocked immediately on-screen and emailed to your inbox. All products include in-app major update alerts.
+    <strong>Instant Delivery & Automated Licensing:</strong> Powered by <strong>Gumroad &amp; PayPal</strong>. Upon payment, your license key is generated automatically, and your software binary download is unlocked immediately on-screen and emailed to your inbox. All products include in-app major update alerts.
   </div>
 
   <div class="grid">
@@ -196,7 +277,7 @@ input, select {
           <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
             <span class="badge" style="background:#58a6ff; color:#040d21; font-weight:800;">ULTIMATE BUNDLE</span>
             <span class="badge" style="background:#3fb95026; color:var(--good);">All 7 Engines Included</span>
-            <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+            <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
           </div>
           <h2 style="font-size:24px; margin:4px 0 8px;">Aether Complete Security &amp; Developer Suite</h2>
           <div class="desc" style="max-width:760px; font-size:14px; color:var(--text);">
@@ -206,14 +287,8 @@ input, select {
         <div style="display:flex; flex-direction:column; align-items:flex-end; min-width:240px;">
           <div class="price-tag" style="color:#58a6ff;">Full Suite Bundle</div>
           <div class="price-sub" style="margin-bottom:12px;">7-in-1 Complete License &bull; Free Major Upgrades</div>
-          <a 
-            href="https://buy.polar.sh/polar_cl_s0MH2P4OjrwneBx0OrckT9GSd4vZvN2iEQhNI1STyoK" 
-            data-polar-checkout 
-            data-polar-checkout-theme="dark" 
-            class="btn btn-polar"
-            style="width:100%; text-align:center; padding:12px 24px; font-size:15px; font-weight:700;">
-            Buy Security Bundle &rarr;
-          </a>
+          <a href="https://7497950237241.gumroad.com/" target="_blank" class="btn btn-gumroad" style="width:100%; text-align:center; padding:12px 24px; font-size:15px; font-weight:700;">Buy Security Bundle via Gumroad &rarr;</a>
+          <button class="btn btn-paypal" onclick="openCheckout('security-bundle', 'Aether Complete Security Suite', 349.99)">Or Checkout with PayPal</button>
         </div>
       </div>
     </div>
@@ -241,13 +316,8 @@ input, select {
         </div>
       </div>
       <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
-        <a href="https://buy.polar.sh/polar_cl_i3vsEjwf4s509ZOxAs93WzkjExtwcEgO0ZDnM2LwEPT" 
-      data-polar-checkout 
-      data-polar-checkout-theme="dark" 
-      class="btn btn-polar" 
-      style="width:100%; text-align:center; padding:10px; font-weight:700; font-size:14px; text-decoration:none; display:block;">
-     Purchase Pro License ($9.99) &rarr;
-   </a>
+        <a href="https://7497950237241.gumroad.com/l/vgmjtb" target="_blank" class="btn btn-gumroad" style="width:100%; text-align:center; padding:10px; font-weight:700; font-size:14px; text-decoration:none; display:block;">Purchase Pro License ($9.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('aether', 'Aether Sovereign Desktop Pro', 9.99)">Or Checkout with PayPal</button>
         <a href="../products/#aether" class="btn" style="background:transparent; border:1px solid var(--line); color:var(--dim); text-align:center; text-decoration:none; font-size:12px; white-space:nowrap; padding:8px 12px; display:block;">
      Interactive Sandbox &amp; Specs &rarr;
    </a>
@@ -261,7 +331,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#0062ff26; color:#58a6ff;">Flagship Release</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Sentinel Kit</h2>
         <div class="desc">High-assurance monorepo CI matrix pruner, schema drift detector, and automated PII scrubber.</div>
@@ -269,13 +339,8 @@ input, select {
       <div>
         <div class="price-tag">$39.99</div>
         <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_idbo4vZ4ajh1beCZY17tN070xs6xU7QrBtQBu3RZ3ck" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($39.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/cnogyy" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($39.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('sentinel-kit', 'Sentinel Kit', 39.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -284,7 +349,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge">Systems Language</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Hexane / Carbonation</h2>
         <div class="desc">High-performance Carbon language toolchain coupled with a 4-tier real-time distributed telemetry engine.</div>
@@ -292,13 +357,8 @@ input, select {
       <div>
         <div class="price-tag">$24.99</div>
         <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_wwsS0Gng0lIIIZPyXHf7VDvzfhsLZj9SXWg6H4MOiLY" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($24.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/cvjce" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($24.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('hexane', 'Hexane / Carbonation', 24.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -307,7 +367,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#2ea44f26; color:#3fb950;">Clinical Privacy</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>MedCrypto Suite</h2>
         <div class="desc">HIPAA/GDPR-compliant homomorphic RNS-CKKS encrypted multi-hospital clinical telemetry pipeline.</div>
@@ -315,13 +375,8 @@ input, select {
       <div>
         <div class="price-tag">$69.99</div>
         <div class="price-sub">One-time purchase &bull; Commercial License &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_bpteW0uBNbtOUKSQxU2thl6NGEDOT8Y3Tsykh0YK1J5" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($69.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/llpvi" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($69.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('medcrypto', 'MedCrypto Suite', 69.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -330,7 +385,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>VMP_DEVIRT</h2>
         <div class="desc">Automated 64-bit devirtualization for VMProtect 3.x & Themida: Z3 SMT solving to clean LLVM IR recompilation.</div>
@@ -338,13 +393,8 @@ input, select {
       <div>
         <div class="price-tag">$99.99</div>
         <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_wgyY05NgIw0vgcpNFPuXC9j2mDktczxSDZcev0B4kmX" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($99.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/bndufv" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($99.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('vmp-devirt', 'VMP_DEVIRT', 99.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -353,7 +403,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#d2992226; color:var(--gold);">Zero-Knowledge</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>zk-HyperVM</h2>
         <div class="desc">Verifiable hardware-assisted virtualization via lookup-accelerated IVC folding over EPT & VMCS transitions.</div>
@@ -361,13 +411,8 @@ input, select {
       <div>
         <div class="price-tag">$149.99</div>
         <div class="price-sub">One-time purchase &bull; Enterprise SLA &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_vbTRkzR92DuyjutnJn2HKfPExoJxLuT72ZcXW267HoZ" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($149.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/dlanpu" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($149.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('zk-hypervm', 'zk-HyperVM', 149.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -376,7 +421,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#f0883e26; color:#f0883e;">Web3 Security</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Rusty Chain Kit</h2>
         <div class="desc">Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.</div>
@@ -384,13 +429,8 @@ input, select {
       <div>
         <div class="price-tag">$59.99</div>
         <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_rmjdof00lr6lfFrQAMnT1bB2yLDlpnckTiNk43iSIIn" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark" 
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar ($59.99)
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/znvck" target="_blank" class="btn btn-gumroad">Buy with Gumroad ($59.99) &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('rusty-chain-kit', 'Rusty Chain Kit', 59.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
@@ -399,7 +439,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Polar 1-Click</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>REA 7.0</h2>
         <div class="desc">13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler &amp; Pseudo-C decompiler.</div>
@@ -407,23 +447,18 @@ input, select {
       <div>
         <div class="price-tag">Commercial Tier</div>
         <div class="price-sub">Desktop Workbench &bull; Wasm Edition &bull; 302 MCP Tools &bull; Free Major Upgrades</div>
-        <a 
-          href="https://buy.polar.sh/polar_cl_BYyW76ew0zK48GkCLXWD96bBY4O1gJddTkXJZ1CZz5y" 
-          data-polar-checkout 
-          data-polar-checkout-theme="dark"
-          class="btn btn-polar">
-          ⚡ 1-Click Buy with Polar &rarr;
-        </a>
+        <a href="https://7497950237241.gumroad.com/l/hyyezm" target="_blank" class="btn btn-gumroad">Buy with Gumroad &rarr;</a>
+        <button class="btn btn-paypal" onclick="openCheckout('rea', 'REA 7.0 - Reverse Engineer Anything', 49.99)">Or Checkout with PayPal</button>
       </div>
     </div>
 
   </div>
 
   <!-- Polar License Key Validation & Update Section -->
-  <h2 class="section-title">Polar License Key Validation & Update Check</h2>
+  <h2 class="section-title">License Key Validation & Update Check</h2>
   <div style="background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:20px;">
     <p style="color:var(--dim); margin-top:0;">
-      Bought via Polar.sh? Enter your <strong>Polar License Key</strong> or check if a new major release (<code>X.0.0</code>) is available:
+      Bought via Gumroad or PayPal? Enter your <strong>License Key</strong> or check if a new major release (<code>X.0.0</code>) is available:
     </p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
       <select id="selectProduct" style="min-width:180px;">
@@ -511,7 +546,7 @@ async function checkVersion() {
         <p style="margin:4px 0; font-size:13px; color:var(--text);">${meta.changelog}</p>
         <p style="margin:4px 0; font-size:12px; color:var(--dim);">Price: <strong>${meta.price || '$39.99'}</strong> &bull; Released: ${meta.release_date}</p>
         <div style="margin-top:10px; display:flex; gap:10px;">
-          <a class="btn btn-polar" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.polar_checkout_url}" data-polar-checkout data-polar-checkout-theme="dark">Get v${meta.latest_version} via Polar</a>
+          <a class="btn btn-polar" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.gumroad_checkout_url || meta.polar_checkout_url}" target="_blank">Get v${meta.latest_version} via Gumroad</a>
           <a class="btn btn-success" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.download_url}" target="_blank">Direct Download</a>
         </div>
       </div>
@@ -522,5 +557,104 @@ async function checkVersion() {
 }
 </script>
 
+
+  <!-- PayPal Checkout Modal -->
+  <div id="checkoutModal" class="modal-backdrop">
+    <div class="modal">
+      <div id="checkoutView">
+        <h3 id="checkoutTitle" style="margin-top:0;">Order Checkout</h3>
+        <p id="checkoutDesc" style="color:var(--dim); margin-bottom:16px;"></p>
+        <div id="paypal-button-container" style="margin:20px 0;"></div>
+        <button class="btn" style="background:var(--line); color:var(--text); width:100%;" onclick="closeCheckout()">Cancel</button>
+      </div>
+
+      <div id="successView" style="display:none;">
+        <h3 style="color:var(--good); margin-top:0;">Payment Successful!</h3>
+        <p>Your license and digital product package have been minted.</p>
+        
+        <label style="font-weight:600; font-size:12px; color:var(--dim);">YOUR CD-KEY / LICENSE TOKEN:</label>
+        <div id="licenseTokenDisplay" class="token-box"></div>
+        <button class="btn" style="background:var(--line); color:var(--text); margin-bottom:16px; width:100%;" onclick="copyToken()">Copy License Token</button>
+
+        <div style="display:flex; gap:10px; margin-bottom:16px;">
+          <a id="downloadPkgBtn" class="btn btn-success" href="#" target="_blank" style="flex:1; text-align:center;">Download Package</a>
+          <button id="downloadKeyBtn" class="btn" style="background:#21262d; border:1px solid var(--line); color:var(--text); flex:1;" onclick="downloadKeyFile()">Save license.key</button>
+        </div>
+
+        <label style="font-weight:600; font-size:12px; color:var(--dim);">QUICK ACTIVATION COMMAND:</label>
+        <pre class="code-box">mkdir -p ~/.aether && echo "<span id="codeTokenSpan">...</span>" > ~/.aether/license.key</pre>
+
+        <p style="font-size:12px; color:var(--dim);">A backup copy of your key and download link has also been sent to your email.</p>
+        <button class="btn" style="background:var(--line); color:var(--text); width:100%; margin-top:12px;" onclick="closeCheckout()">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+let currentProduct = '';
+let currentToken = '';
+
+function openCheckout(productId, name, price) {
+  currentProduct = productId;
+  document.getElementById('checkoutTitle').innerText = 'Checkout: ' + name;
+  document.getElementById('checkoutDesc').innerText = 'Total: 
+</html>
+ + price + ' USD (Includes commercial perpetual license)';
+  document.getElementById('checkoutView').style.display = 'block';
+  document.getElementById('successView').style.display = 'none';
+  document.getElementById('checkoutModal').style.display = 'flex';
+
+  const container = document.getElementById('paypal-button-container');
+  container.innerHTML = '';
+
+  if (window.paypal) {
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            description: name,
+            custom_id: productId,
+            amount: { value: price.toString() }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          const payerEmail = details.payer?.email_address || 'customer@aetherx86.com';
+          const dummyToken = 'AETH-LIC.' + btoa(payerEmail).replace(/=/g,'') + '.' + productId + '.' + Date.now();
+          currentToken = dummyToken;
+          document.getElementById('checkoutView').style.display = 'none';
+          document.getElementById('successView').style.display = 'block';
+          document.getElementById('licenseTokenDisplay').innerText = dummyToken;
+          document.getElementById('codeTokenSpan').innerText = dummyToken;
+          document.getElementById('downloadPkgBtn').href = '/releases/' + productId + '-latest.tar.gz';
+        });
+      }
+    }).render('#paypal-button-container');
+  }
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').style.display = 'none';
+}
+
+function copyToken() {
+  if (currentToken) {
+    navigator.clipboard.writeText(currentToken);
+    alert('License Token copied to clipboard!');
+  }
+}
+
+function downloadKeyFile() {
+  if (!currentToken) return;
+  const blob = new Blob([currentToken], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'license.key';
+  a.click();
+}
+
+</script>
 </body>
 </html>

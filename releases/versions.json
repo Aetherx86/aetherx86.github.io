@@ -9,10 +9,11 @@
       "major_version": 1,
       "release_date": "2026-11-08",
       "price": "$39.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_idbo4vZ4ajh1beCZY17tN070xs6xU7QrBtQBu3RZ3ck",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/cnogyy",
       "download_url": "https://aetherx86.github.io/releases/sentinel-kit-v1.0.2.tar.gz",
       "changelog": "High-assurance AST pruner, secret scrubber, and Polar.sh + Ed25519 licensing guard.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/cnogyy"
     },
     "hexane": {
       "name": "Hexane / Carbonation",
@@ -20,10 +21,11 @@
       "major_version": 1,
       "release_date": "2026-11-08",
       "price": "$24.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_wwsS0Gng0lIIIZPyXHf7VDvzfhsLZj9SXWg6H4MOiLY",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/cvjce",
       "download_url": "https://aetherx86.github.io/releases/hexane-v1.0.0.tar.gz",
       "changelog": "High-performance Carbon language toolchain & distributed 4-tier telemetry engine.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/cvjce"
     },
     "medcrypto": {
       "name": "MedCrypto Suite",
@@ -31,10 +33,11 @@
       "major_version": 1,
       "release_date": "2026-11-08",
       "price": "$69.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_bpteW0uBNbtOUKSQxU2thl6NGEDOT8Y3Tsykh0YK1J5",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/llpvi",
       "download_url": "https://aetherx86.github.io/releases/medcrypto-v1.0.0.tar.gz",
       "changelog": "HIPAA/GDPR-compliant homomorphic RNS-CKKS encrypted clinical telemetry and EMR analytics pipeline.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/llpvi"
     },
     "vmp-devirt": {
       "name": "VMP_DEVIRT",
@@ -42,10 +45,11 @@
       "major_version": 1,
       "release_date": "2026-11-08",
       "price": "$99.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_wgyY05NgIw0vgcpNFPuXC9j2mDktczxSDZcev0B4kmX",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/bndufv",
       "download_url": "https://aetherx86.github.io/releases/vmp-devirt-v1.0.0.tar.gz",
       "changelog": "64-bit binary devirtualization, VMProtect 3.x/Themida lifting, Z3 SMT solving, and clean LLVM IR recompilation.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/bndufv"
     },
     "zk-hypervm": {
       "name": "zk-HyperVM",
@@ -53,10 +57,11 @@
       "major_version": 1,
       "release_date": "2026-11-08",
       "price": "$149.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_vbTRkzR92DuyjutnJn2HKfPExoJxLuT72ZcXW267HoZ",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/dlanpu",
       "download_url": "https://aetherx86.github.io/releases/zk-hypervm-v1.0.0.tar.gz",
       "changelog": "Verifiable hardware-assisted virtualization via lookup-accelerated IVC folding over EPT & VMCS transitions.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/dlanpu"
     },
     "rusty-chain-kit": {
       "name": "Rusty Chain Kit",
@@ -64,10 +69,11 @@
       "major_version": 0,
       "release_date": "2026-11-08",
       "price": "$59.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_rmjdof00lr6lfFrQAMnT1bB2yLDlpnckTiNk43iSIIn",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/znvck",
       "download_url": "https://aetherx86.github.io/releases/rusty-chain-kit-v0.1.1.tar.gz",
       "changelog": "Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.",
-      "min_license_version": "0.1.0"
+      "min_license_version": "0.1.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/znvck"
     },
     "security-bundle": {
       "name": "Aether Complete Security & Toolchain Bundle",
@@ -75,10 +81,11 @@
       "major_version": 2026,
       "release_date": "2026-11-08",
       "price": "Bundle Discount",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_s0MH2P4OjrwneBx0OrckT9GSd4vZvN2iEQhNI1STyoK",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/",
       "download_url": "https://aetherx86.github.io/releases/aether-security-bundle-2026.11.tar.gz",
       "changelog": "Complete commercial suite: Sentinel Kit, Hexane, REA 7.0, MedCrypto, VMP_DEVIRT, zk-HyperVM, and Rusty Chain Kit.",
-      "min_license_version": "1.0.0"
+      "min_license_version": "1.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/"
     },
     "rea": {
       "name": "REA 7.0 - Reverse Engineer Anything",
@@ -86,10 +93,11 @@
       "major_version": 7,
       "release_date": "2026-11-08",
       "price": "$49.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_BYyW76ew0zK48GkCLXWD96bBY4O1gJddTkXJZ1CZz5y",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/hyyezm",
       "download_url": "https://aetherx86.github.io/releases/rea-v7.0.3.tar.gz",
       "changelog": "13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler & Pseudo-C decompiler.",
-      "min_license_version": "7.0.0"
+      "min_license_version": "7.0.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/hyyezm"
     },
     "aether": {
       "name": "Aether Sovereign Desktop Pro",
@@ -97,10 +105,11 @@
       "major_version": 0,
       "release_date": "2026-11-08",
       "price": "$9.99",
-      "polar_checkout_url": "https://buy.polar.sh/polar_cl_i3vsEjwf4s509ZOxAs93WzkjExtwcEgO0ZDnM2LwEPT",
+      "polar_checkout_url": "https://7497950237241.gumroad.com/l/vgmjtb",
       "download_url": "",
       "changelog": "Unified sovereign platform: 8-module HyperOffice suite, Fafnir AES-256-GCM vault, Sleipnir Anti-DPI engine, multi-tab Tor browser, local Apple Silicon M4/ANE AI, and ctxflow WASM High Table council.",
-      "min_license_version": "0.1.0"
+      "min_license_version": "0.1.0",
+      "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/vgmjtb"
     }
   }
 }
