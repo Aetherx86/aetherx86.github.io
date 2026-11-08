@@ -1,0 +1,45 @@
+{
+  "$schema": "https://aetherx86.github.io/schemas/release-manifest.v1.json",
+  "updated_at": "2026-11-08T19:55:00Z",
+  "products": {
+    "sentinel-kit": {
+      "name": "Sentinel Kit",
+      "latest_version": "1.0.2",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "price": "$39.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_idbo4vZ4ajh1beCZY17tN070xs6xU7QrBtQBu3RZ3ck",
+      "polar_product_id": "75b547a3-1789-4069-9304-0ffe5d75a8bb",
+      "download_url": "https://aetherx86.github.io/releases/sentinel-kit-v1.0.2.tar.gz",
+      "changelog": "High-assurance AST pruner, secret scrubber, and Polar.sh + Ed25519 licensing guard.",
+      "min_license_version": "1.0.0"
+    },
+    "hexane": {
+      "name": "Hexane / Carbonation",
+      "latest_version": "1.0.0",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "download_url": "https://aetherx86.github.io/releases/hexane-v1.0.0.tar.gz",
+      "changelog": "Initial stable commercial release.",
+      "min_license_version": "1.0.0"
+    },
+    "zk-hypervm": {
+      "name": "zk-HyperVM",
+      "latest_version": "1.0.0",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "download_url": "https://aetherx86.github.io/releases/zk-hypervm-v1.0.0.tar.gz",
+      "changelog": "Deterministic zero-knowledge hypervisor runtime.",
+      "min_license_version": "1.0.0"
+    },
+    "medcrypto": {
+      "name": "MedCrypto Suite",
+      "latest_version": "1.0.0",
+      "major_version": 1,
+      "release_date": "2026-11-08",
+      "download_url": "https://aetherx86.github.io/releases/medcrypto-v1.0.0.tar.gz",
+      "changelog": "HIPAA-compliant encrypted clinical telemetry pipeline.",
+      "min_license_version": "1.0.0"
+    }
+  }
+}
