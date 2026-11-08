@@ -169,17 +169,14 @@ input, select {
 </head>
 <body>
 
-<header>
-  <div class="header-wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-    <div>
-      <h1>Aether Systems Commercial Store</h1>
-      <p>Automated Polar.sh Merchant of Record Licensing & Instant Binary Package Distribution</p>
-    </div>
-    <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; font-size:14px;">
-      <a href="../" style="color:var(--dim); text-decoration:none; font-weight:500;">Home</a>
-      <a href="../products/" style="color:var(--accent); text-decoration:none; font-weight:600;">Product Specs &amp; Demos</a>
-      <a href="../simulation/" style="color:var(--good); text-decoration:none; font-weight:600;">Simulation Lab</a>
-      <a href="../#enterprise" style="color:var(--dim); text-decoration:none;">Enterprise Hub</a>
+<header style="padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--panel);">
+  <div style="max-width: 980px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+    <a href="../" style="font-size: 1.1rem; font-weight: 800; color: #f8fafc; text-decoration: none;">AETHER</a>
+    <div style="display: flex; gap: 20px; align-items: center; font-size: 14px;">
+      <a href="../#products" style="color: var(--dim); text-decoration: none;">Products</a>
+      <a href="../simulation/" style="color: var(--dim); text-decoration: none;">Simulation</a>
+      <a href="../#enterprise" style="color: var(--dim); text-decoration: none;">About Us</a>
+      <a href="./" style="background: var(--accent); color: #040d21; font-weight: 700; padding: 5px 14px; border-radius: 6px; text-decoration: none;">Store</a>
     </div>
   </div>
 </header>
@@ -244,9 +241,13 @@ input, select {
         </div>
       </div>
       <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
-        <button class="btn btn-polar" onclick="alert('Polar checkout for Aether Desktop Pro ($9.99) will open here once the Polar product link is pasted!')" style="width:100%; text-align:center; padding:10px; font-weight:700; font-size:14px;">
-          Purchase Pro License ($9.99) &rarr;
-        </button>
+        <a href="https://buy.polar.sh/polar_cl_i3vsEjwf4s509ZOxAs93WzkjExtwcEgO0ZDnM2LwEPT" 
+      data-polar-checkout 
+      data-polar-checkout-theme="dark" 
+      class="btn btn-polar" 
+      style="width:100%; text-align:center; padding:10px; font-weight:700; font-size:14px; text-decoration:none; display:block;">
+     Purchase Pro License ($9.99) &rarr;
+   </a>
         <a href="../products/#aether" class="btn" style="background:transparent; border:1px solid var(--line); color:var(--dim); text-align:center; text-decoration:none; font-size:12px;">
           Try Interactive In-Browser Sandbox &amp; Specs &rarr;
         </a>

@@ -1,6 +1,6 @@
 {
   "$schema": "https://aetherx86.github.io/schemas/release-manifest.v1.json",
-  "updated_at": "2026-11-08T21:30:00Z",
+  "updated_at": "2026-11-08T21:43:00Z",
   "organization_id": "9ebf8af0-a566-4fa7-8869-07fff0b13c7a",
   "products": {
     "sentinel-kit": {
@@ -97,7 +97,7 @@
       "major_version": 0,
       "release_date": "2026-11-08",
       "price": "$9.99",
-      "polar_checkout_url": "",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_i3vsEjwf4s509ZOxAs93WzkjExtwcEgO0ZDnM2LwEPT",
       "download_url": "",
       "changelog": "Unified sovereign platform: 8-module HyperOffice suite, Fafnir AES-256-GCM vault, Sleipnir Anti-DPI engine, multi-tab Tor browser, local Apple Silicon M4/ANE AI, and ctxflow WASM High Table council.",
       "min_license_version": "0.1.0"
