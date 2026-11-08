@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <title>Spinel: High-Entropy Binary Section Map & Forensics Workbench</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    canvas {
+      width: 100%;
+      height: 220px;
+      background: #090d13;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-top: 12px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="header-badge">LIVE WEBASSEMBLY WORKBENCH</span>
+      <h1>Spinel Binary Entropy Scanner</h1>
+      <p>Instant binary section mapping, format detection (ELF, Mach-O, PE), and sliding-window Shannon entropy visualization running in a 1.3 KB freestanding WebAssembly engine.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <label>Binary Payload & Sample Presets</label>
+        <div id="wasm-status" class="status-pill">Loading WebAssembly...</div>
+      </div>
+
+      <div class="presets">
+        <span class="preset-chip" onclick="loadSample('elf')">Sample ELF Header</span>
+        <span class="preset-chip" onclick="loadSample('packed')">Packed / Obfuscated Shellcode</span>
+        <span class="preset-chip" onclick="loadSample('text')">Plain Text / Zero Entropy</span>
+        <span class="preset-chip" onclick="loadSample('mixed')">Multi-Section Mixed Binary</span>
+      </div>
+
+      <div class="row" style="margin-top: 14px;">
+        <input type="file" id="file-input" onchange="handleFileUpload(event)" style="flex: 1;">
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">Shannon Entropy</div>
+          <div class="value" id="val-entropy">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Detected Format</div>
+          <div class="value" id="val-format">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Obfuscation Signature</div>
+          <div class="value" id="val-signature">-</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">WASM Engine Size</div>
+          <div class="value" style="color: var(--accent);">1.3 KB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label>Sliding-Window Entropy Graph (0.0 to 8.0 bits/byte)</label>
+        <span style="font-size: 11px; color: var(--dim);">Red line indicates high-entropy packed threshold (&gt; 7.2)</span>
+      </div>
+      <canvas id="entropy-canvas" width="800" height="220"></canvas>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

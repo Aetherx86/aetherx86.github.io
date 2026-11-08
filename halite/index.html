@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <title>Halite: Deterministic Lattice Boltzmann Fluid Automaton (D2Q9)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #fluid-canvas {
+      width: 100%;
+      height: 320px;
+      image-rendering: pixelated;
+      background: #000;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-top: 14px;
+      cursor: crosshair;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="header-badge">LIVE WEBASSEMBLY WORKBENCH</span>
+      <h1>Halite Fluid Dynamics Engine</h1>
+      <p>Deterministic 2D Lattice Boltzmann Method (D2Q9) fluid and gas automaton compiled into a 2.0 KB freestanding WebAssembly kernel. Fixed-point arithmetic, boundary collision modeling, and zero libc imports.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <label>Fluid Simulation Controls</label>
+        <div id="wasm-status" class="status-pill">Loading WebAssembly...</div>
+      </div>
+
+      <div class="row">
+        <button id="btn-pause" onclick="togglePause()">Pause Simulation</button>
+        <button id="btn-reset" class="btn-outline" onclick="resetFluid()">Reset Grid</button>
+        <button id="btn-clear-obs" class="btn-outline" onclick="clearObstacles()">Clear Obstacles</button>
+      </div>
+
+      <div class="presets">
+        <span class="preset-chip" onclick="loadPreset('cylinder')">Von Kármán Cylinder</span>
+        <span class="preset-chip" onclick="loadPreset('airfoil')">Airfoil Wedge</span>
+        <span class="preset-chip" onclick="loadPreset('slits')">Double Slit Barrier</span>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">Lattice Resolution</div>
+          <div class="value">160 &times; 80 (D2Q9)</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Simulation Steps</div>
+          <div class="value" id="val-steps">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Rendering FPS</div>
+          <div class="value" id="val-fps">60 FPS</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">WASM Binary Size</div>
+          <div class="value" style="color: var(--accent);">2.0 KB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label>Live Velocity & Vorticity Field (Click / Drag to Paint Obstacles)</label>
+        <span style="font-size: 11px; color: var(--dim);">White dots represent solid obstacles</span>
+      </div>
+      <canvas id="fluid-canvas" width="160" height="80"></canvas>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

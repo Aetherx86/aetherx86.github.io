@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <title>Celestine: Audio DSP Modular Synthesizer & Oscilloscope</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .knob-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .knob-control {
+      background: #090d13;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px;
+    }
+    .knob-control label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .piano {
+      display: flex;
+      margin-top: 16px;
+      height: 120px;
+      user-select: none;
+      position: relative;
+    }
+    .key-white {
+      flex: 1;
+      background: #e2e8f0;
+      color: #000;
+      border: 1px solid #1a2332;
+      border-radius: 0 0 4px 4px;
+      font-weight: 700;
+      font-size: 11px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 8px;
+      cursor: pointer;
+    }
+    .key-white:active, .key-white.active {
+      background: #38bdf8;
+    }
+    .key-black {
+      width: 6%;
+      height: 65%;
+      background: #0f172a;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      border-radius: 0 0 3px 3px;
+      position: absolute;
+      z-index: 2;
+      font-size: 9px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 4px;
+      cursor: pointer;
+    }
+    .key-black:active, .key-black.active {
+      background: #a855f7;
+    }
+    #scope-canvas {
+      width: 100%;
+      height: 180px;
+      background: #090d13;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      margin-top: 12px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="header-badge">LIVE WEBASSEMBLY WORKBENCH</span>
+      <h1>Celestine Modular Synthesizer</h1>
+      <p>High-precision audio DSP synthesizer and real-time 1024-point FFT spectrum analyzer compiled into a 12 KB freestanding WebAssembly module. PolyBLEP antialiasing, SVF filtering, and zero libc imports.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <label>Audio Engine & Synthesizer Controls</label>
+        <div id="wasm-status" class="status-pill">Loading WebAssembly...</div>
+      </div>
+
+      <div class="row">
+        <button id="btn-audio" onclick="toggleAudio()">Enable WebAudio Output</button>
+        <button class="btn-outline" onclick="setPreset('lead')">Preset: 80s Synth Lead</button>
+        <button class="btn-outline" onclick="setPreset('bass')">Preset: Acid Bass</button>
+        <button class="btn-outline" onclick="setPreset('bell')">Preset: FM Crystal Bell</button>
+      </div>
+
+      <div class="knob-grid">
+        <div class="knob-control">
+          <label><span>Filter Cutoff</span><span id="txt-cutoff">1200 Hz</span></label>
+          <input type="range" id="param-cutoff" min="100" max="8000" value="1200" oninput="updateParam(4, this.value); document.getElementById('txt-cutoff').textContent = this.value + ' Hz';">
+        </div>
+        <div class="knob-control">
+          <label><span>Resonance (Q)</span><span id="txt-q">2.5</span></label>
+          <input type="range" id="param-q" min="0.5" max="8.0" step="0.1" value="2.5" oninput="updateParam(5, this.value); document.getElementById('txt-q').textContent = this.value;">
+        </div>
+        <div class="knob-control">
+          <label><span>FM Mod Depth</span><span id="txt-fm">0.4</span></label>
+          <input type="range" id="param-fm" min="0" max="2.0" step="0.05" value="0.4" oninput="updateParam(3, this.value); document.getElementById('txt-fm').textContent = this.value;">
+        </div>
+        <div class="knob-control">
+          <label><span>Master Volume</span><span id="txt-vol">80%</span></label>
+          <input type="range" id="param-vol" min="0" max="1.0" step="0.05" value="0.8" oninput="updateParam(0, this.value); document.getElementById('txt-vol').textContent = Math.round(this.value*100) + '%';">
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">Active Note</div>
+          <div class="value" id="val-note">None</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Antialiasing Filter</div>
+          <div class="value">PolyBLEP O(1)</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">FFT Resolution</div>
+          <div class="value">1024 Bins</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">WASM Payload</div>
+          <div class="value" style="color: var(--accent);">12 KB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <label>Virtual Keyboard (Click or Touch Keys to Play)</label>
+      <div class="piano" id="piano"></div>
+    </div>
+
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label>Real-Time Audio Waveform & FFT Spectrum</label>
+        <span style="font-size: 11px; color: var(--dim);">Cyan: Time-Domain Waveform | Purple: FFT Frequency Bins</span>
+      </div>
+      <canvas id="scope-canvas" width="800" height="180"></canvas>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

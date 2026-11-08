@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self';">
+  <title>Zircon: Freestanding RISC-V RV32I Micro-Emulator & Stepper</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 12px;
+    }
+    .reg-cell {
+      background: #090d13;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .reg-name { color: var(--dim); }
+    .reg-val { color: var(--accent); font-weight: 700; }
+    .reg-changed { background: rgba(63, 185, 80, 0.15); border-color: var(--good); }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="header-badge">LIVE WEBASSEMBLY WORKBENCH</span>
+      <h1>Zircon RV32I Micro-Emulator</h1>
+      <p>Cycle-accurate, bidirectional RISC-V RV32I pipeline stepper compiled into a 3.1 KB freestanding WebAssembly module. Comptime opcode decoding, fixed-buffer RAM, and zero libc imports.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <label>Execution Controls & Presets</label>
+        <div id="wasm-status" class="status-pill">Loading WebAssembly...</div>
+      </div>
+      <div class="row">
+        <button id="btn-step" onclick="stepForward()">Step Forward &rarr;</button>
+        <button id="btn-step-back" class="btn-outline" onclick="stepBack()">&larr; Step Back</button>
+        <button id="btn-run" class="btn-outline" onclick="toggleRun()">Auto Run</button>
+        <button id="btn-reset" class="btn-outline" onclick="resetCPU()">Reset CPU</button>
+      </div>
+
+      <div class="presets">
+        <span class="preset-chip" onclick="loadProgram('fib')">Fibonacci (x10 = 55)</span>
+        <span class="preset-chip" onclick="loadProgram('sum')">Sum 1..10 (x10 = 55)</span>
+        <span class="preset-chip" onclick="loadProgram('mem')">RAM Store / Load</span>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="title">Program Counter (PC)</div>
+          <div class="value" id="val-pc">0x00000000</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Instructions Retired</div>
+          <div class="value" id="val-inst">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Clock Cycles</div>
+          <div class="value" id="val-cycles">0</div>
+        </div>
+        <div class="metric-card">
+          <div class="title">Binary Size (WASM)</div>
+          <div class="value" style="color: var(--accent);">3.1 KB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <label>RISC-V Integer Registers (x0 – x31)</label>
+      <div class="reg-grid" id="reg-grid"></div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
