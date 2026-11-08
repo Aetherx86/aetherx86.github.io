@@ -170,9 +170,17 @@ input, select {
 <body>
 
 <header>
-  <div class="header-wrap">
-    <h1>Aether Systems Commercial Store</h1>
-    <p>Automated Polar.sh Merchant of Record Licensing & Instant Binary Package Distribution</p>
+  <div class="header-wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <div>
+      <h1>Aether Systems Commercial Store</h1>
+      <p>Automated Polar.sh Merchant of Record Licensing & Instant Binary Package Distribution</p>
+    </div>
+    <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap; font-size:14px;">
+      <a href="../" style="color:var(--dim); text-decoration:none; font-weight:500;">← Home</a>
+      <a href="../products/" style="color:var(--accent); text-decoration:none; font-weight:600;">Product Specs &amp; Sandboxes ↗</a>
+      <a href="../simulation/" style="color:var(--good); text-decoration:none; font-weight:600;">Simulation Lab ⚡</a>
+      <a href="../#enterprise" style="color:var(--dim); text-decoration:none;">Enterprise Hub</a>
+    </div>
   </div>
 </header>
 
@@ -183,6 +191,35 @@ input, select {
   </div>
 
   <div class="grid">
+
+    <!-- 0. Complete Security & Systems Bundle -->
+    <div class="card featured" style="grid-column: 1 / -1; background: linear-gradient(135deg, #0d1a2d 0%, #161b22 100%); border: 2px solid #58a6ff; box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+        <div>
+          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+            <span class="badge" style="background:#58a6ff; color:#040d21; font-weight:800;">ULTIMATE BUNDLE</span>
+            <span class="badge" style="background:#3fb95026; color:var(--good);">All 7 Engines Included</span>
+            <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
+          </div>
+          <h2 style="font-size:24px; margin:4px 0 8px;">Aether Complete Security &amp; Developer Suite</h2>
+          <div class="desc" style="max-width:760px; font-size:14px; color:var(--text);">
+            Full air-gapped commercial deployment of <strong>Sentinel Kit</strong>, <strong>Hexane Toolchain</strong>, <strong>REA 7.0</strong>, <strong>MedCrypto Suite</strong>, <strong>VMP_DEVIRT</strong>, <strong>zk-HyperVM</strong>, and <strong>Rusty Chain Kit</strong>. Includes perpetual enterprise seat keys, prioritized SLAs, and unified binary distribution.
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; min-width:240px;">
+          <div class="price-tag" style="color:#58a6ff;">Full Suite Bundle</div>
+          <div class="price-sub" style="margin-bottom:12px;">7-in-1 Complete License &bull; Free Major Upgrades</div>
+          <a 
+            href="https://buy.polar.sh/polar_cl_s0MH2P4OjrwneBx0OrckT9GSd4vZvN2iEQhNI1STyoK" 
+            data-polar-checkout 
+            data-polar-checkout-theme="dark" 
+            class="btn btn-polar"
+            style="width:100%; text-align:center; padding:12px 24px; font-size:15px; font-weight:700;">
+            ⚡ 1-Click Buy Security Bundle &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- 1. Sentinel Kit -->
     <div class="card featured">
@@ -304,7 +341,7 @@ input, select {
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="badge" style="background:#f0883e26; color:#f0883e;">Web3 Security</span>
-          <span style="font-size:11px; color:var(--dim); font-weight:600;">Toolchain</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
         </div>
         <h2>Rusty Chain Kit</h2>
         <div class="desc">Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.</div>
@@ -313,11 +350,34 @@ input, select {
         <div class="price-tag">$59.99</div>
         <div class="price-sub">One-time purchase &bull; Perpetual License &bull; Free Major Upgrades</div>
         <a 
-          href="https://polar.sh/aetherx86" 
-          target="_blank"
-          class="btn btn-polar"
-          style="background:#21262d; border:1px solid var(--line); color:var(--text);">
-          Visit Polar Storefront
+          href="https://buy.polar.sh/polar_cl_rmjdof00lr6lfFrQAMnT1bB2yLDlpnckTiNk43iSIIn" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark" 
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar ($59.99)
+        </a>
+      </div>
+    </div>
+
+    <!-- 7. REA 7.0 (Reverse Engineer Anything) -->
+    <div class="card elite">
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600;">⚡ Polar 1-Click</span>
+        </div>
+        <h2>REA 7.0</h2>
+        <div class="desc">13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler &amp; Pseudo-C decompiler.</div>
+      </div>
+      <div>
+        <div class="price-tag">Commercial Tier</div>
+        <div class="price-sub">Desktop Workbench &bull; Wasm Edition &bull; 302 MCP Tools &bull; Free Major Upgrades</div>
+        <a 
+          href="https://buy.polar.sh/polar_cl_BYyW76ew0zK48GkCLXWD96bBY4O1gJddTkXJZ1CZz5y" 
+          data-polar-checkout 
+          data-polar-checkout-theme="dark"
+          class="btn btn-polar">
+          ⚡ 1-Click Buy with Polar &rarr;
         </a>
       </div>
     </div>

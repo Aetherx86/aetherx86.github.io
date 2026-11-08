@@ -64,10 +64,32 @@
       "major_version": 0,
       "release_date": "2026-11-08",
       "price": "$59.99",
-      "polar_checkout_url": "https://buy.polar.sh/aetherx86/rusty-chain-kit",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_rmjdof00lr6lfFrQAMnT1bB2yLDlpnckTiNk43iSIIn",
       "download_url": "https://aetherx86.github.io/releases/rusty-chain-kit-v0.1.1.tar.gz",
       "changelog": "Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.",
       "min_license_version": "0.1.0"
+    },
+    "security-bundle": {
+      "name": "Aether Complete Security & Toolchain Bundle",
+      "latest_version": "2026.11",
+      "major_version": 2026,
+      "release_date": "2026-11-08",
+      "price": "Bundle Discount",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_s0MH2P4OjrwneBx0OrckT9GSd4vZvN2iEQhNI1STyoK",
+      "download_url": "https://aetherx86.github.io/releases/aether-security-bundle-2026.11.tar.gz",
+      "changelog": "Complete commercial suite: Sentinel Kit, Hexane, REA 7.0, MedCrypto, VMP_DEVIRT, zk-HyperVM, and Rusty Chain Kit.",
+      "min_license_version": "1.0.0"
+    },
+    "rea": {
+      "name": "REA 7.0 - Reverse Engineer Anything",
+      "latest_version": "7.0.3",
+      "major_version": 7,
+      "release_date": "2026-11-08",
+      "price": "$49.99",
+      "polar_checkout_url": "https://buy.polar.sh/polar_cl_BYyW76ew0zK48GkCLXWD96bBY4O1gJddTkXJZ1CZz5y",
+      "download_url": "https://aetherx86.github.io/releases/rea-v7.0.3.tar.gz",
+      "changelog": "13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler & Pseudo-C decompiler.",
+      "min_license_version": "7.0.0"
     }
   }
 }
