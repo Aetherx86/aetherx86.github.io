@@ -6,5 +6,6 @@ Source code and assets for the official landing portal of **Aether Systems & Res
 - Pure HTML5/CSS/JavaScript with zero external runtime dependencies.
 - Sub-50ms TTFB and 100/100 Lighthouse performance metrics.
 - Product showcase and commercial licensing tiers for `sentinel-kit`, `rusty-chain-kit`, `Hexane`, and `VMP_DEVIRT`.
+- High-performance mineral systems suite showcase: Zircon (freestanding RV32I micro-emulator), Corundum (comptime eBPF verifier), Spinel (SIMD Shannon entropy engine), Halite (deterministic Q16.16 LBM fluid automaton), and Stibnite (POSIX C-ABI hooking interceptor).
 - Direct 1-click sponsorship integration (GitHub Sponsors, Ko-fi, Buy Me a Coffee, PayPal) and on-chain Web3 settlement references.
 - Private security audit and consulting intake pre-filled mailto workflows.
