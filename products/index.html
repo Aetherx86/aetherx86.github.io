@@ -500,7 +500,7 @@
   <div class="product-pills-bar">
     <div class="container">
       <div class="pills-scroll">
-        <a href="#aether" class="prod-pill active">Aether Desktop ($49.99)</a>
+        <a href="#aether" class="prod-pill active">Aether Desktop ($9.99)</a>
         <a href="#sentinel-kit" class="prod-pill">Sentinel Kit ($39.99)</a>
         <a href="#hexane" class="prod-pill">Hexane Compiler ($24.99)</a>
         <a href="#rea" class="prod-pill">REA 7.0 (Commercial)</a>
@@ -555,16 +555,11 @@
           </p>
         </div>
         <div class="product-cta-box">
-          <div class="product-price">$49.99</div>
-          <div class="product-tier">Perpetual Commercial License &bull; macOS Apple Silicon</div>
+          <div class="product-price">$9.99</div>
+          <div class="product-tier">Lifetime Commercial License &bull; macOS Apple Silicon</div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-            <a href="../aether/" class="btn-primary" style="text-align:center;text-decoration:none;">
-              Try Interactive Web Trial (WASM) &rarr;
-            </a>
-            <a href="https://github.com/Aetherx86/aetherx86.github.io/releases/download/v0.1.1/Aether.zip" 
-               class="btn-secondary" 
-               style="text-align:center;text-decoration:none;">
-              Download Desktop v0.1.1 (223 MB) &rarr;
+            <a href="../shop/" class="btn-primary" style="text-align:center;text-decoration:none;font-weight:700;">
+              Purchase Pro ($9.99) &rarr;
             </a>
           </div>
         </div>
@@ -588,13 +583,30 @@
           <ul class="spec-list">
             <li><strong>Zero External Cloud Calls:</strong> All document editing, local LLMs, and cryptographic sealing run strictly within local process boundaries.</li>
             <li><strong>Zero Plaintext at Rest:</strong> All temp files and undo buffers are memory-scrubbed on close.</li>
-            <li><strong>WASM Web Compatibility:</strong> Core office engine, vault cryptography, and AI council run 100% in-browser on the Web Trial.</li>
+            <li><strong>WASM Web Compatibility:</strong> Core office engine, vault cryptography, and AI council run 100% in-browser.</li>
             <li><strong>Verification Tests:</strong> 289 comprehensive verification points passing with 100% green status.</li>
           </ul>
         </div>
       </div>
 
-      <div class="cli-box">
+      <!-- INLINE RECTANGULAR TESTBED BOX -->
+      <div style="margin-top:28px; background:#080d16; border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <span class="card-badge" style="color:#38bdf8; border-color:rgba(56,189,248,0.4); margin-bottom:4px; display:inline-block;">IN-BROWSER WORKSPACE TRIAL</span>
+            <h3 style="font-size:1.15rem; color:#f8fafc; margin:0;">Aether Sovereign HyperOffice 실시간 체험</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin:2px 0 0;">새 창을 띄울 필요 없이 아래 네모 박스 안에서 8대 오피스, AES-256 암호화 금고, 마인드맵을 직접 조작해보실 수 있습니다.</p>
+          </div>
+          <button class="btn-primary" id="btn-toggle-aether-trial" onclick="toggleAetherTrial()" style="cursor:pointer; font-size:0.88rem; padding:8px 16px;">
+            Try 해보실래요?
+          </button>
+        </div>
+        <div id="aether-trial-container" style="display:none; margin-top:14px; border:1px solid rgba(255,255,255,0.1); border-radius:8px; overflow:hidden;">
+          <iframe id="aether-frame" src="../aether/" style="width:100%; height:620px; border:none; background:#06080d;"></iframe>
+        </div>
+      </div>
+
+      <div class="cli-box" style="margin-top:24px;">
         <div class="cli-header">Aether System Architecture Diagram</div>
         <pre class="cli-body"><code>                                  ┌─────────────────────────────────────────┐
                                   │             AETHER CORE                 │
