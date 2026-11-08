@@ -6,8 +6,8 @@
     <title>Jadeite Anatomy Board</title>
     <meta name="description" content="Talk, sketch and dissect: an on-device 3D anatomy board for explaining to patients and teaching students." />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 6 9v14l10 6 10-6V9z' fill='%23123b38' stroke='%232dd4bf' stroke-width='2'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-C31f5fM2.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CXgLKolQ.css">
+    <script type="module" crossorigin src="./assets/index-CYPYlQYq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CqDE1aAK.css">
   </head>
   <body>
     <div class="app" id="app" data-audience="patient" data-tool="navigate">
@@ -30,6 +30,9 @@
           <button data-v="ja">日</button>
           <button data-v="la">LA</button>
         </div>
+        <button class="ghost-btn toggle-badge" id="btn-toggle-hardmode" title="하드 모드: 대량 동맥 분출 출혈 및 실시간 혈액 손실량 · Hard Mode: Torrential arterial bleeding & EBL counter">하드모드 Hard</button>
+        <button class="ghost-btn toggle-badge" id="btn-toggle-incidents" title="돌발 합병증 시뮬레이션: 수술 중 급성 혈관 파열, 심실빈맥, 저혈압 쇼크 · Surgical Incidents: Sudden crisis simulation">돌발상황 Incidents</button>
+        <button class="ghost-btn" id="btn-audio-mute" title="수술실 생체신호 모니터 음향 · OR Audio & Alarms">🔊</button>
         <button class="ghost-btn" id="btn-report" title="수술 계획서 / 환자 설명서 · Pre-op & Explanation Report">보고서 Report</button>
         <button class="ghost-btn" id="btn-scenes" title="Saved scenes and lesson files">장면 Scenes</button>
         <button class="ghost-btn" id="btn-export" title="Save a PNG of the board">PNG</button>
@@ -63,6 +66,9 @@
         </button>
         <button data-tool="cautery" title="보비 전기소작기 · Electrocautery (Bovie): coagulate bleeding vessels">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span>소작</span>
+        </button>
+        <button data-tool="clamp" title="혈관 겸자 (불독 클램프) · Vascular Bulldog Clamp: clamp bleeding vessels (x)">
+          <svg viewBox="0 0 24 24"><path d="M6 4l6 8-6 8m12-16l-6 8 6 8m-4-8h-4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>겸자</span>
         </button>
         <hr />
         <button data-toggle="spotlight" class="on" title="말한 것만 강조 · Spotlight what is said">
@@ -209,11 +215,12 @@
         </div>
         <div class="pro-features">
           <ul>
-            <li><b>전체 65+ 전문 수술 시뮬레이션:</b> 10개 진료과 (일반외과, 흉부/심장, 정형외과, 신경외과, 비뇨의학과, 성형외과, 이비인후과, 안과, 장기이식)</li>
-            <li><b>실감 외과 도구 & 물리 엔진:</b> 동맥 분출/정맥 출혈, 흡인(석션), 보비 전기소작 지혈 및 연기 효과, 수술 견인기</li>
+            <li><b>전체 130+ 전문 수술 시뮬레이션:</b> 12개 전문 분과 (외상응급외과, 흉부심장혈관, 신경/척추, 정형외과, 일반소화기, 혈관외과, 비뇨의학과, 장기이식, 성형재건, 이비인후과, 안과, 산부인과)</li>
+            <li><b>실감 외과 도구 & 물리 엔진:</b> 고속 동맥 분출 분수(Arterial Fountain), 흡인(석션), 보비 전기소작 지혈 및 연기 효과, 혈관 불독 겸자(Bulldog Clamp) 클램핑, 수술 견인기</li>
+            <li><b>하드 모드 & 돌발 합병증 시뮬레이션:</b> 통제 불능 대량 출혈(Hard Mode), 실시간 EBL 혈액 손실량 계측, 급성 동맥 파열, 악성 심실빈맥(VTach) 200J 제세동, 출혈성 쇼크 처치</li>
+            <li><b>실시간 수술실 모니터 HUD:</b> Lead II 심전도 오실로스코프, 맥박수(HR), 혈압(NIBP), 산소포화도(SpO2), Web Audio 프로시저럴 모니터 비프 & 위급 알람</li>
             <li><b>고해상도 4층 해부 모델:</b> 피부 - 피하지방(진피) - 근육 - 혈관/신경/장기 - 골격 및 Z-Anatomy 414개 인대/관절</li>
-            <li><b>의사용 수술계획서 & 환자설명서 (Report):</b> 실시간 3D 시야 캡처, ASA 분류, 단계별 수술 궤적, PDF 인쇄</li>
-            <li><b>진단 퍼즐 Doctordle & Europe PMC 논문:</b> 매일 업데이트되는 임상 증례 추론 및 최신 의학 문헌 연계</li>
+            <li><b>의사용 수술계획서 & 실시간 텔레메트리 리포트:</b> 실시간 3D 시야 캡처, EBL 및 돌발 상황 처치 일지, 단계별 수술 궤적, 1-Click PDF 인쇄</li>
             <li><b>100% 온디바이스 음성 AI & 다국어 지원:</b> 한국어·영어·일본어·라틴어 실시간 전환, PHI 보호</li>
           </ul>
         </div>
