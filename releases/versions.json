@@ -112,13 +112,13 @@
       "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/vgmjtb"
     },
     "jadeite": {
-      "name": "Jadeite — 3D Surgical Anatomy & Clinical Simulation Board",
+      "name": "Jadeite \u2014 3D Surgical Anatomy & Clinical Simulation Board",
       "latest_version": "0.0.1",
       "major_version": 0,
       "release_date": "2026-11-09",
       "price": "$8.99",
       "polar_checkout_url": "https://7497950237241.gumroad.com/l/bqlvjw",
-      "download_url": "",
+      "download_url": "https://aetherx86.github.io/releases/jadeite-v0.0.1.tar.gz",
       "changelog": "On-device 3D surgical anatomy board: operating room mode, 3D trench incisions, vascular clamping, cath lab PCI, voice navigation, and deterministic clinical cases.",
       "min_license_version": "0.0.1",
       "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/bqlvjw"

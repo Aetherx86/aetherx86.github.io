@@ -501,6 +501,7 @@ input, select {
     </p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
       <select id="selectProduct" style="min-width:210px;">
+        <option value="bqlvjw" data-slug="jadeite">Jadeite — 3D Surgical Anatomy</option>
         <option value="vgmjtb" data-slug="aether">Aether Sovereign Desktop Pro</option>
         <option value="cnogyy" data-slug="sentinel-kit">Sentinel Kit</option>
         <option value="cvjce" data-slug="hexane">Hexane / Carbonation</option>
@@ -522,7 +523,10 @@ input, select {
 
 <script>
 async function validateGumroadKey() {
-  const permalink = document.getElementById('selectProduct').value;
+  const sel = document.getElementById('selectProduct');
+  const permalink = sel.value;
+  const selectedOpt = sel.options[sel.selectedIndex];
+  const productSlug = selectedOpt.getAttribute('data-slug') || permalink;
   const key = document.getElementById('gumroadKeyInput').value.trim();
   const resDiv = document.getElementById('gumroadValidationResult');
   
@@ -555,19 +559,49 @@ async function validateGumroadKey() {
       const email = p.email ? p.email.replace(/(.{2})(.*)(@.*)/, '$1***$3') : 'Licensed Customer';
       const createdDate = p.created_at ? new Date(p.created_at).toLocaleDateString() : 'Active';
 
+      // Query latest release manifest from versions.json
+      let releaseHtml = '';
+      try {
+        const vRes = await fetch('../releases/versions.json');
+        const vData = await vRes.json();
+        const meta = vData.products?.[productSlug];
+        if (meta) {
+          const downloadBtn = meta.download_url
+            ? `<a class="btn btn-success" style="width:auto; padding:8px 18px; font-size:13px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;" href="${meta.download_url}" download target="_blank">⬇ Download ${meta.name} v${meta.latest_version}</a>`
+            : `<span style="font-size:12px; color:var(--dim);">Release binary distributed directly to licensed inbox.</span>`;
+          const webAppBtn = productSlug === 'jadeite'
+            ? `<a class="btn btn-gumroad" style="width:auto; padding:8px 18px; font-size:13px; font-weight:700; text-decoration:none;" href="../jadeite/" target="_blank">Launch 3D Web App &rarr;</a>`
+            : '';
+
+          releaseHtml = `
+            <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(63, 185, 80, 0.35);">
+              <h5 style="margin:0 0 6px; color:var(--text); font-size:14px;">Unlocked Latest Release: <strong>${meta.name} v${meta.latest_version}</strong> (${meta.release_date})</h5>
+              <p style="margin:4px 0 10px; font-size:12px; color:var(--dim);">${meta.changelog}</p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                ${downloadBtn}
+                ${webAppBtn}
+              </div>
+            </div>
+          `;
+        }
+      } catch (e) {
+        console.warn('Could not load versions.json', e);
+      }
+
       resDiv.innerHTML = `
-        <div style="background:#2ea44f1a; border-left:3px solid var(--good); padding:14px; border-radius:0 6px 6px 0;">
+        <div style="background:#2ea44f1a; border-left:3px solid var(--good); padding:16px; border-radius:0 6px 6px 0;">
           <h4 style="margin:0 0 6px; color:var(--good);">✔ Active Gumroad License Key Verified</h4>
           <p style="margin:2px 0; font-size:13px; color:var(--text);">Product: <strong>${p.product_name || 'Aether Commercial Tool'}</strong></p>
           <p style="margin:2px 0; font-size:12px; color:var(--dim);">Licensed To: <strong>${email}</strong> &bull; Issued: ${createdDate}</p>
           <p style="margin:2px 0; font-size:12px; color:var(--dim);">Activations: <strong>${uses}</strong> / ${p.variants || 'Unlimited Seat'}</p>
           <p style="margin:2px 0; font-size:12px; color:var(--dim);">License Status: <strong style="color:var(--good);">${p.refunded ? 'REFUNDED' : (p.chargebacked ? 'CHARGEBACK' : 'ACTIVE &bull; IN GOOD STANDING')}</strong></p>
+          ${releaseHtml}
         </div>
       `;
     } else {
       resDiv.innerHTML = `
         <div style="background:#f851491a; border-left:3px solid var(--bad); padding:12px; border-radius:0 6px 6px 0;">
-          <span style="color:var(--bad); font-weight:600;">✖ Validation Rejected:</span> ${data.message || 'License key does not match this product.'}
+          <span style="color:var(--bad); font-weight:600;">✖ Validation Rejected:</span> ${data.message || 'License key does not match this product or has expired.'}
         </div>
       `;
     }
@@ -585,7 +619,7 @@ async function checkVersion() {
   resDiv.innerHTML = '<span style="color:var(--dim);">Checking versions registry...</span>';
 
   try {
-    const res = await fetch('/releases/versions.json');
+    const res = await fetch('../releases/versions.json');
     const data = await res.json();
     const meta = data.products?.[productKey];
 
@@ -599,9 +633,9 @@ async function checkVersion() {
         <h4 style="margin:0 0 6px; color:var(--accent);">Current Release: ${meta.name} v${meta.latest_version}</h4>
         <p style="margin:4px 0; font-size:13px; color:var(--text);">${meta.changelog}</p>
         <p style="margin:4px 0; font-size:12px; color:var(--dim);">Price: <strong>${meta.price || '$39.99'}</strong> &bull; Released: ${meta.release_date}</p>
-        <div style="margin-top:10px; display:flex; gap:10px;">
+        <div style="margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
           <a class="btn btn-gumroad" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.gumroad_checkout_url || meta.polar_checkout_url}" target="_blank">Get v${meta.latest_version} via Gumroad</a>
-          <a class="btn btn-success" style="width:auto; padding:6px 16px; font-size:13px;" href="${meta.download_url}" target="_blank">Direct Download</a>
+          <span style="font-size:12px; color:var(--dim);">Enter license key above to unlock direct download.</span>
         </div>
       </div>
     `;
