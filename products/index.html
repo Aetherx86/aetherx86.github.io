@@ -1731,5 +1731,19 @@ function downloadKeyFile() {
 }
 
 </script>
+<script>
+// Opens and closes the in-page Aether HyperOffice trial (the iframe loads only when opened).
+function toggleAetherTrial() {
+  var box = document.getElementById('aether-trial-container');
+  var btn = document.getElementById('btn-toggle-aether-trial');
+  var frame = document.getElementById('aether-frame');
+  if (!box) return;
+  var open = box.style.display === 'none' || box.style.display === '';
+  box.style.display = open ? 'block' : 'none';
+  if (btn) btn.textContent = open ? '체험 닫기 · Close' : 'Try 해보실래요?';
+  if (open && frame && !frame.dataset.loaded) { frame.dataset.loaded = '1'; frame.src = frame.getAttribute('src'); }
+  if (open) box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
 </body>
 </html>
