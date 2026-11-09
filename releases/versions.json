@@ -1,6 +1,6 @@
 {
   "$schema": "https://aetherx86.github.io/schemas/release-manifest.v1.json",
-  "updated_at": "2026-11-08T21:43:00Z",
+  "updated_at": "2026-11-09T05:00:00Z",
   "organization_id": "9ebf8af0-a566-4fa7-8869-07fff0b13c7a",
   "products": {
     "sentinel-kit": {
@@ -101,18 +101,18 @@
     },
     "aether": {
       "name": "Aether Sovereign Desktop Pro",
-      "latest_version": "0.1.1",
+      "latest_version": "0.1.2",
       "major_version": 0,
-      "release_date": "2026-11-08",
+      "release_date": "2026-11-09",
       "price": "$9.99",
       "polar_checkout_url": "https://7497950237241.gumroad.com/l/vgmjtb",
-      "download_url": "",
-      "changelog": "Unified sovereign platform: 8-module HyperOffice suite, Fafnir AES-256-GCM vault, Sleipnir Anti-DPI engine, multi-tab Tor browser, local Apple Silicon M4/ANE AI, and ctxflow WASM High Table council.",
+      "download_url": "https://aetherx86.github.io/releases/aether-v0.1.2.tar.gz",
+      "changelog": "Native Sovereign Document Subsystem: In-process Korean HWP3-5, HWPX, DOCX, XLSX, PPTX, and PDF parsing with top-tier OCR on HWPX and PDF, lossless HWPX roundtrip form-filling, PII redaction, semantic diffing, and RAG chunking.",
       "min_license_version": "0.1.0",
       "gumroad_checkout_url": "https://7497950237241.gumroad.com/l/vgmjtb"
     },
     "jadeite": {
-      "name": "Jadeite \u2014 3D Surgical Anatomy & Clinical Simulation Board",
+      "name": "Jadeite — 3D Surgical Anatomy & Clinical Simulation Board",
       "latest_version": "0.0.1",
       "major_version": 0,
       "release_date": "2026-11-09",
