@@ -89,6 +89,15 @@ header p {
   border-radius: 12px;
   background: #1f6feb26;
   color: var(--accent);
+  white-space: nowrap;
+}
+.card-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 .card h2 {
   margin: 10px 0 6px;
@@ -274,10 +283,10 @@ input, select {
     <div class="card featured" style="grid-column: 1 / -1; background: linear-gradient(135deg, #0d1a2d 0%, #161b22 100%); border: 2px solid #58a6ff; box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
         <div>
-          <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
-            <span class="badge" style="background:#58a6ff; color:#040d21; font-weight:800;">ULTIMATE BUNDLE</span>
-            <span class="badge" style="background:#3fb95026; color:var(--good);">All 7 Engines Included</span>
-            <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:8px;">
+            <span class="badge" style="background:#58a6ff; color:#040d21; font-weight:800; white-space:nowrap;">ULTIMATE BUNDLE</span>
+            <span class="badge" style="background:#3fb95026; color:var(--good); white-space:nowrap;">All 7 Engines Included</span>
+            <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
           </div>
           <h2 style="font-size:24px; margin:4px 0 8px;">Aether Complete Security &amp; Developer Suite</h2>
           <div class="desc" style="max-width:760px; font-size:14px; color:var(--text);">
@@ -296,7 +305,7 @@ input, select {
     
     <!-- Aether Sovereign Desktop Pro -->
     <div class="card" style="border: 2px solid #38bdf8; background: linear-gradient(180deg, #0d1624 0%, #161b22 100%);">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <div class="card-badge-row">
         <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.4);">SOVEREIGN DESKTOP</span>
         <span class="badge" style="background:#3fb95026; color:var(--good);">macOS Apple Silicon</span>
       </div>
@@ -327,9 +336,9 @@ input, select {
     <!-- Jadeite (3D Surgical Anatomy & Clinical Simulation Board) -->
     <div class="card featured" style="border-color: rgba(45, 212, 191, 0.45); box-shadow: 0 0 25px rgba(45, 212, 191, 0.08);">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span class="badge" style="background:rgba(45, 212, 191, 0.15); color:#2dd4bf; border:1px solid rgba(45, 212, 191, 0.35);">Surgical Anatomy &amp; Simulation</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Instant Delivery &bull; On-Device</span>
+        <div class="card-badge-row">
+          <span class="badge" style="background:rgba(45, 212, 191, 0.15); color:#2dd4bf; border:1px solid rgba(45, 212, 191, 0.35);">3D Clinical Anatomy</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Instant Delivery &bull; On-Device</span>
         </div>
         <h2 style="color:#2dd4bf;">Jadeite</h2>
         <div class="desc">On-device 3D anatomy board &amp; surgical simulator: 2,234 structures across 8 layers, 3D trench incisions, vascular clamping, cath lab PCI, and hemodynamic vitals monitor.</div>
@@ -359,9 +368,9 @@ input, select {
     <!-- 1. Sentinel Kit -->
     <div class="card featured">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#0062ff26; color:#58a6ff;">Flagship Release</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Sentinel Kit</h2>
         <div class="desc">High-assurance monorepo CI matrix pruner, schema drift detector, and automated PII scrubber.</div>
@@ -377,9 +386,9 @@ input, select {
     <!-- 2. Hexane / Carbonation -->
     <div class="card">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge">Systems Language</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Hexane / Carbonation</h2>
         <div class="desc">High-performance Carbon language toolchain coupled with a 4-tier real-time distributed telemetry engine.</div>
@@ -395,9 +404,9 @@ input, select {
     <!-- 3. MedCrypto Suite -->
     <div class="card">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#2ea44f26; color:#3fb950;">Clinical Privacy</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>MedCrypto Suite</h2>
         <div class="desc">HIPAA/GDPR-compliant homomorphic RNS-CKKS encrypted multi-hospital clinical telemetry pipeline.</div>
@@ -413,9 +422,9 @@ input, select {
     <!-- 4. VMP_DEVIRT -->
     <div class="card elite">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>VMP_DEVIRT</h2>
         <div class="desc">Automated 64-bit devirtualization for VMProtect 3.x & Themida: Z3 SMT solving to clean LLVM IR recompilation.</div>
@@ -431,9 +440,9 @@ input, select {
     <!-- 5. zk-HyperVM -->
     <div class="card elite">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#d2992226; color:var(--gold);">Zero-Knowledge</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>zk-HyperVM</h2>
         <div class="desc">Verifiable hardware-assisted virtualization via lookup-accelerated IVC folding over EPT & VMCS transitions.</div>
@@ -449,9 +458,9 @@ input, select {
     <!-- 6. Rusty Chain Kit -->
     <div class="card">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#f0883e26; color:#f0883e;">Web3 Security</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>Rusty Chain Kit</h2>
         <div class="desc">Unified Ethereum command center: dynamic fuzzing, invariant verification, EVM decompilation, and MEV mempool simulator.</div>
@@ -467,9 +476,9 @@ input, select {
     <!-- 7. REA 7.0 (Reverse Engineer Anything) -->
     <div class="card elite">
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div class="card-badge-row">
           <span class="badge" style="background:#bc8cff26; color:var(--purple);">Reverse Engineering</span>
-          <span style="font-size:11px; color:var(--good); font-weight:600;">Gumroad &bull; Instant Delivery</span>
+          <span style="font-size:11px; color:var(--good); font-weight:600; white-space:nowrap;">Gumroad &bull; Instant Delivery</span>
         </div>
         <h2>REA 7.0</h2>
         <div class="desc">13-crate native Rust reverse-engineering platform, 302 MCP tools, multi-architecture disassembler &amp; Pseudo-C decompiler.</div>
