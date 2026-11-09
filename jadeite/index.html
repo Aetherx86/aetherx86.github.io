@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Jadeite Anatomy Board</title>
     <meta name="description" content="Talk, sketch and dissect: an on-device 3D anatomy board for explaining to patients and teaching students." />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 6 9v14l10 6 10-6V9z' fill='%23123b38' stroke='%232dd4bf' stroke-width='2'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-B_eHIwll.js"></script>
+    <link rel="icon" href="./skull-icon.svg" />
+    <script type="module" crossorigin src="./assets/index-CBBIfMip.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DPQgIW4a.css">
   </head>
   <body>
     <div class="app" id="app" data-audience="patient" data-tool="navigate">
       <header class="topbar">
         <div class="brand">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 9v14l10 6 10-6V9z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 3v26M6 9l20 14M26 9 6 23" stroke="currentColor" stroke-width="1" opacity=".45"/></svg>
+          <svg viewBox="0 0 512 512" width="22" height="22" aria-hidden="true" style="margin-right:6px; vertical-align:middle; display:inline-block;"><path d="M 256 68 C 160 68, 102 135, 102 225 C 102 278, 126 312, 142 334 C 148 342, 150 354, 146 364 C 138 382, 134 402, 140 412 C 145 420, 160 422, 182 422 C 188 422, 192 418, 195 412 C 198 406, 204 406, 208 412 C 214 422, 230 422, 256 422 C 282 422, 298 422, 304 412 C 308 406, 314 406, 317 412 C 320 418, 324 422, 330 422 C 352 422, 367 420, 372 412 C 378 402, 374 382, 366 364 C 362 354, 364 342, 370 334 C 386 312, 410 278, 410 225 C 410 135, 352 68, 256 68 Z" fill="currentColor"/><circle cx="196" cy="254" r="22" fill="#0c0f14"/><circle cx="316" cy="254" r="22" fill="#0c0f14"/><path d="M 256 288 C 252 296, 241 324, 241 338 C 241 349, 250 355, 256 355 C 262 355, 271 349, 271 338 C 271 324, 260 296, 256 288 Z" fill="#0c0f14"/></svg>
           <span>Jadeite</span><small>Anatomy Board</small>
         </div>
         <div class="search">
@@ -36,7 +36,7 @@
         <button class="ghost-btn" id="btn-report" title="수술 계획서 / 환자 설명서 · Pre-op & Explanation Report">보고서 Report</button>
         <button class="ghost-btn" id="btn-scenes" title="Saved scenes and lesson files">장면 Scenes</button>
         <button class="ghost-btn" id="btn-export" title="Save a PNG of the board">PNG</button>
-        <button class="primary-btn pro-badge" id="btn-license" title="Jadeite Pro Commercial License ($28.99)">Pro $28.99</button>
+        <button class="primary-btn pro-badge active" id="btn-license" title="Jadeite Pro 정품 활성화됨 · Pro Active" style="background: rgba(45, 212, 191, 0.15); color: #2dd4bf; border: 1px solid rgba(45, 212, 191, 0.4);">Pro Active ✓</button>
         <button class="ghost-btn" id="btn-settings" title="Settings" aria-label="Settings">
           <svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.3 4.6-1.6-.9a6.9 6.9 0 0 0 0-2.4l1.6-.9-1.8-3.1-1.6.9a7 7 0 0 0-2.1-1.2V3.6h-3.6v1.9a7 7 0 0 0-2.1 1.2l-1.6-.9-1.8 3.1 1.6.9a6.9 6.9 0 0 0 0 2.4l-1.6.9 1.8 3.1 1.6-.9a7 7 0 0 0 2.1 1.2v1.9h3.6v-1.9a7 7 0 0 0 2.1-1.2l1.6.9z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
@@ -242,17 +242,17 @@
           </ul>
         </div>
         <div class="trial-note" id="trial-msg">
-          ※ 현재 <b>웹 체험판(Web Try)</b>에서는 <b>"왼팔 힘줄 재건술 (Left arm tendon reconstruction)"</b>을 무료로 직접 체험하실 수 있습니다. 다른 수술을 진행하려면 Pro 라이선스 키를 활성화하세요.
+          ※ 현재 <b>웹 체험판(Web Try)</b>에서는 <b>"전완부 굴곡건 재건술 (Forearm flexor tendon reconstruction)"</b>만 무료로 직접 체험하실 수 있습니다. 다른 수술을 진행하려면 Pro 라이선스 키를 활성화하세요.
         </div>
         <div class="license-activate">
           <label for="input-license"><b>라이선스 키 인증 · Activate License Key:</b></label>
           <div class="row" style="margin-top:4px;">
-            <input id="input-license" placeholder="JDT1-..." />
+            <input id="input-license" placeholder="Gumroad 라이선스 키 또는 JDT1-... · Gumroad license key or JDT1-..." />
             <button id="btn-activate-license" class="primary">인증 Activate</button>
           </div>
           <div class="row" style="margin-top:10px; gap:8px;">
             <button id="btn-buy-license" class="primary highlight">지금 구매하기 · Buy Pro $28.99</button>
-            <button id="btn-try-tendon" class="ghost-btn">체험 허용: 왼팔 힘줄 재건술 실행</button>
+            <button id="btn-try-tendon" class="ghost-btn">체험 실행: 전완부 굴곡건 재건술</button>
           </div>
         </div>
         <form method="dialog" style="margin-top:16px;"><button class="ghost-btn">닫기 Close</button></form>
